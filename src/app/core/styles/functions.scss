@@ -1,0 +1,4 @@
+@function gridSize($value) {
+  $grid-size: 4px;
+  @return $value * $grid-size;
+}

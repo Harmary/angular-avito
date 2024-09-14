@@ -1,0 +1,62 @@
+@import "../../styles/functions.scss";
+
+.header {
+  border-bottom: 2px var(--gray-100) solid;
+
+  &-top {
+    background-color: var(--bs-dark);
+
+    padding: gridSize(2) 0;
+    .container {
+      justify-content: end;
+    }
+    &-btn-group {
+      display: flex;
+      gap: gridSize(6);
+    }
+
+    .bi {
+      margin: 0;
+    }
+  }
+
+  &-login {
+    border-color: transparent;
+    background-color: transparent;
+    padding: gridSize(2) 0;
+  }
+
+  &-newad {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  &-bottom {
+    padding: gridSize(4) 0;
+    // justify-content: space-between;
+
+    .left-section {
+      display: flex;
+      gap:  gridSize(4);
+      align-items: center;
+      flex-grow: 1;
+    }
+    .right-section {
+      flex-grow: 7;
+      align-self: end;
+    }
+  }
+
+  &-logo {
+    font-weight: 700;
+    font-size: gridSize(7);
+    color: var(--bs-body-color);
+    text-decoration: none;
+  }
+
+  &-search{
+
+  }
+}

@@ -1,0 +1,13 @@
+.input-group,
+.button-group {
+  display: flex;
+  gap: 4px;
+}
+
+.input-group {
+  flex-direction: column;
+}
+
+.button-group {
+  flex-direction: row;
+}

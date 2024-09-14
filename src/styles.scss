@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import 'app/core/styles/variables.scss';
+@import 'app/core/styles/functions.scss';
+@import "primeng/resources/primeng.css";
+@import "primeng/resources/themes/soho-light/theme.css";
+@import "primeicons/primeicons.css";
+
+body {
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: gridSize(324);
+  padding: 0;
+  display: flex;
+  margin: 0 auto;
+}

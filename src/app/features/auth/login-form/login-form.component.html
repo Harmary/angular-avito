@@ -1,0 +1,18 @@
+<div class="login-container">
+  <div class="input-group">
+    <label for="username" class="font-semibold w-6rem">Номер телефона</label>
+    <input pInputText id="username" class="flex-auto" autocomplete="off" type="tel" />
+  </div>
+
+  <div class="input-group">
+    <label for="password" class="font-semibold w-6rem">Пароль</label>
+    <input pInputText id="password" class="flex-auto" autocomplete="off" type="password"/>
+  </div>
+
+  <div class="login-registration">
+    <span>Нет аккаунта? </span>
+    <a (click)="changeForm.emit('register')">Зарегистрироваться</a>
+  </div>
+
+  <p-button class="login-button" label="Войти" />
+</div>

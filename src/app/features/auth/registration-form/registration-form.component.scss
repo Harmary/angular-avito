@@ -1,0 +1,29 @@
+@import "../../../core/styles/functions.scss";
+@import "../../../core/styles/form.scss";
+
+.registration {
+  &-container {
+    min-width: gridSize(90);
+    display: flex;
+    flex-direction: column;
+    gap: gridSize(4);
+  }
+
+  &-button {
+    align-self: flex-end;
+  }
+
+  &-login {
+    margin-bottom: gridSize(2);
+    a {
+      margin-left: gridSize(2);
+      cursor: pointer;
+      color: var(--highlight-text-color);
+    }
+  }
+
+  &-button-icon {
+    display: block;
+    margin-right: gridSize(1);
+  }
+}

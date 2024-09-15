@@ -1,0 +1,11 @@
+<p-card [header]="card?.title" [subheader]="card?.amount + ' P'" class="ad-card">
+  <ng-template pTemplate="header">
+    <img alt="Card" [src]="card?.image" class="ad-card-image" />
+  </ng-template>
+  <p class="ad-card-address">
+    <small class="text-muted">{{card?.address}}</small>
+  </p>
+  <p class="ad-card-date">
+    <small class="text-muted">{{card?.date}}</small>
+  </p>
+</p-card>

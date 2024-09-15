@@ -1,0 +1,7 @@
+<h4 class="main-title">Рекомендации для вас</h4>
+
+<div class="main-cards-wrapper">
+  @for (card of cards; track $index) {
+    <app-ad-card [card]="card" class="ma"></app-ad-card>
+  }
+</div>

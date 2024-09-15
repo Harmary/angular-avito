@@ -6,6 +6,7 @@ import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { CategoriesService } from './categories.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories-sidebar',
@@ -22,6 +23,7 @@ import { CategoriesService } from './categories.service';
   styleUrl: './categories-sidebar.component.scss',
 })
 export class CategoriesSidebarComponent {
+  private subscription: Subscription = new Subscription();
   categoriesService = inject(CategoriesService);
   categories: any[] = [];
   showCategories: boolean = false;
@@ -29,14 +31,20 @@ export class CategoriesSidebarComponent {
   subcategories: any = [];
 
   constructor() {
-    this.categoriesService.getCategories().subscribe({
-      next: (data) => {
-        this.categories = data;
-      },
-      error: (error) => {
-        console.error('Error fetching categories:', error);
-      },
-    });
+    this.subscription.add(
+      this.categoriesService.getCategories().subscribe({
+        next: (data) => {
+          this.categories = data;
+        },
+        error: (error) => {
+          console.error('Error fetching categories:', error);
+        },
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   toggleCategories() {

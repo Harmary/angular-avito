@@ -1,0 +1,14 @@
+.ad-card {
+  &-address,
+  &-date {
+    margin: 0;
+  }
+
+  &-image {
+    width: 19rem;
+    height: 15rem;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../core/styles/functions.scss";
+
+.main {
+  &-title {
+    margin-bottom: gridSize(6);
+
+    font-family: Inter;
+    font-size: gridSize(6);
+    font-weight: 600;
+    line-height: gridSize(8);
+    text-align: left;
+  }
+
+  &-cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: gridSize(6);
+    margin-bottom: gridSize(5);
+  }
+  &-card {
+    display: flex;
+  }
+}

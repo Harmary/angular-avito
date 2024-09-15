@@ -1,0 +1,44 @@
+@import "../../styles/functions.scss";
+
+.sidebar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.category {
+  min-width:  gridSize(50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-title {
+    margin: 0;
+  }
+}
+
+.subcategories {
+  max-height: 70vh;
+  padding: gridSize(4);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: gridSize(5);
+
+}
+
+.subcategory {
+    &-title {
+    margin: 0 0 gridSize(3);
+  }
+
+  &-option {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin: gridSize(2) 0;
+
+    &:hover {
+      color: var(--highlight-text-color)
+    }
+
+  }
+}

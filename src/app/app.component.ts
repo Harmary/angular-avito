@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./core/layout/header/header.component";
 import { CommonModule } from '@angular/common';
 
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterModule,
     HeaderComponent,
     CommonModule,
   ],

@@ -6,6 +6,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { AuthComponent } from "../../../features/auth/auth.component";
+import { CategoriesSidebarComponent } from "../categories-sidebar/categories-sidebar.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,10 +19,11 @@ import { AuthComponent } from "../../../features/auth/auth.component";
     FormsModule,
     InputGroupModule,
     InputGroupAddonModule,
-    AuthComponent
-],
+    AuthComponent,
+    CategoriesSidebarComponent,
+    RouterModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-}
+export class HeaderComponent {}

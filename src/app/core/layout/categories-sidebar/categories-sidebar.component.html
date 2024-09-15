@@ -1,0 +1,45 @@
+<p-button
+  type="button"
+  label="Категории"
+  [icon]="showCategories ? 'pi pi-times' : 'pi pi-align-left'"
+  (onClick)="op.toggle($event); toggleCategories()"
+/>
+
+<p-overlayPanel #op>
+  <div class="sidebar-wrapper">
+    <div class="categories">
+      <p-listbox
+        [options]="categories"
+        optionLabel="name"
+        (onClick)="openSubcategories($event)"
+        [style]="{ border: 'none'}"
+      >
+        <ng-template let-categories pTemplate="item">
+          <div class="category">
+            <h3 class="category-title">{{ categories.name }}</h3><i class="pi pi-angle-right"></i>
+          </div>
+        </ng-template>
+      </p-listbox>
+    </div>
+
+    <div class="subcategories">
+      @if (showSubcategories) {
+        @for (item of subcategories; track $index) {
+          <div class="subcategory">
+
+            <h4 class="subcategory-title">{{item.name}}</h4>
+              @for (section of item.sections; track $index) {
+                <a
+                  class="subcategory-option"
+                  [routerLink]="['/', section.guid]">
+                  {{section.name}}
+                </a>
+              }
+          </div>
+        }
+      }
+    </div>
+
+  </div>
+
+</p-overlayPanel>

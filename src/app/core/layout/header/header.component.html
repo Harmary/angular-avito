@@ -3,8 +3,7 @@
     <div class="container">
       <div class="header-top-btn-group">
         <app-auth class="header-login" />
-        <p-button class="header-newad" label="Новое объявление" icon="pi pi-plus" iconPos="right"/>
-
+        <p-button class="header-newad" routerLink="ad" label="Новое объявление" icon="pi pi-plus" iconPos="right"/>
       </div>
 
     </div>
@@ -12,8 +11,8 @@
 
   <div class="header-bottom container">
     <div class="left-section">
-      <a class="header-logo" href="/">Доска объявлений</a>
-      <p-button type="button" label="Категории" icon="pi pi-align-left" />
+      <a class="header-logo" routerLink="/">Доска объявлений</a>
+      <app-categories-sidebar/>
     </div>
     <div class="right-section">
       <p-inputGroup class="header-search">
@@ -23,3 +22,5 @@
     </div>
   </div>
 </header>
+
+

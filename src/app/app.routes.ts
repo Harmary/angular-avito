@@ -17,9 +17,10 @@ export const routes: Routes = [
     title: 'Main page',
     component: MainPageComponent,
   },
-  // {
-  //   path: '**',
-  //   title: 'Page 404',
-  // }
+  {
+    path: '**',
+    title: 'Page 404',
+    loadComponent: () => import('./pages/error-page/error-page.component').then((c) => c.ErrorPageComponent),
+  }
 
 ];

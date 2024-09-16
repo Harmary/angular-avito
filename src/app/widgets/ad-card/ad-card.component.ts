@@ -11,13 +11,5 @@ import { CardModule } from 'primeng/card';
   styleUrl: './ad-card.component.scss',
 })
 export class AdCardComponent {
-  @Input() card: Card | undefined;
+  @Input() card: any;
 }
-
-type Card = {
-  title: string;
-  image: string;
-  amount: string;
-  address: string;
-  date: string;
-};

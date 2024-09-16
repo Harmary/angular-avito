@@ -11,7 +11,7 @@
       <p-listbox
         [options]="categories"
         optionLabel="name"
-        (onClick)="openSubcategories($event)"
+        (onClick)="openSections($event)"
         [style]="{ border: 'none'}"
       >
         <ng-template let-categories pTemplate="item">
@@ -23,16 +23,16 @@
     </div>
 
     <div class="subcategories">
-      @if (showSubcategories) {
-        @for (item of subcategories; track $index) {
+      @if (showSections) {
+        @for (item of sections; track $index) {
           <div class="subcategory">
 
             <h4 class="subcategory-title">{{item.name}}</h4>
-              @for (section of item.sections; track $index) {
+              @for (subcategory of item.subcategories; track $index) {
                 <a
                   class="subcategory-option"
-                  [routerLink]="['/', section.guid]">
-                  {{section.name}}
+                  [routerLink]="['/', subcategory.guid]">
+                  {{subcategory.name}}
                 </a>
               }
           </div>

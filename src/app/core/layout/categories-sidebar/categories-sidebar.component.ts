@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { CategoriesService } from './categories.service';
+import { CategoriesService } from '../../../shared/api/services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -27,8 +27,8 @@ export class CategoriesSidebarComponent {
   categoriesService = inject(CategoriesService);
   categories: any[] = [];
   showCategories: boolean = false;
-  showSubcategories: boolean = false;
-  subcategories: any = [];
+  showSections: boolean = false;
+  sections: any = [];
 
   constructor() {
     this.subscription.add(
@@ -51,11 +51,11 @@ export class CategoriesSidebarComponent {
     this.showCategories = !this.showCategories;
   }
 
-  openSubcategories(event: any) {
+  openSections(event: any) {
     const { option } = event;
-    this.showSubcategories = true;
-    this.subcategories = this.categories.find(
+    this.showSections = true;
+    this.sections = this.categories.find(
       (category) => category.guid === option.guid
-    ).subcategories;
+    ).sections;
   }
 }

@@ -3,45 +3,49 @@
     {
       "guid": "cat-001",
       "name": "Транспорт",
-      "subcategories": [
+      "sections": [
         {
-          "guid": "subcat-001",
+          "guid": "sec-001",
           "name": "Автомобили",
-          "sections": [
+          "subcategories": [
             {
-              "guid": "sec-001",
+              "guid": "subcat-001",
               "name": "Картинг"
             },
             {
-              "guid": "sec-002",
+              "guid": "subcat-002",
               "name": "Автобусы"
+            },
+            {
+              "guid": "subcat-011",
+              "name": "Легковые автомобили"
             }
           ]
         },
         {
-          "guid": "subcat-002",
+          "guid": "sec-002",
           "name": "Грузовики",
-          "sections": [
+          "subcategories": [
             {
-              "guid": "sec-003",
+              "guid": "subcat-003",
               "name": "Легкие грузовики"
             },
             {
-              "guid": "sec-004",
+              "guid": "subcat-004",
               "name": "Тяжелые грузовики"
             }
           ]
         },
         {
-          "guid": "subcat-003",
+          "guid": "sec-003",
           "name": "Запчасти",
-          "sections": [
+          "subcategories": [
             {
-              "guid": "sec-005",
+              "guid": "subcat-005",
               "name": "Двигатели"
             },
             {
-              "guid": "sec-006",
+              "guid": "subcat-006",
               "name": "Шины"
             }
           ]
@@ -51,31 +55,31 @@
     {
       "guid": "cat-002",
       "name": "Недвижимость",
-      "subcategories": [
+      "sections": [
         {
-          "guid": "subcat-004",
+          "guid": "sec-004",
           "name": "Жилая недвижимость",
-          "sections": [
+          "subcategories": [
             {
-              "guid": "sec-007",
+              "guid": "subcat-007",
               "name": "Квартиры"
             },
             {
-              "guid": "sec-008",
+              "guid": "subcat-008",
               "name": "Дома"
             }
           ]
         },
         {
-          "guid": "subcat-005",
+          "guid": "sec-005",
           "name": "Коммерческая недвижимость",
-          "sections": [
+          "subcategories": [
             {
-              "guid": "sec-009",
+              "guid": "subcat-009",
               "name": "Офисы"
             },
             {
-              "guid": "sec-010",
+              "guid": "subcat-010",
               "name": "Магазины"
             }
           ]
@@ -83,14 +87,16 @@
       ]
     }
   ],
-  "cards": [
+  "adverts": [
     {
       "guid": "123e4567-e89b-12d3-a456-426614174010",
       "title": "Продажа квартиры",
       "description": "Просторная трехкомнатная квартира с видом на море. Полностью меблирована и готова к заселению.",
-      "category": "Недвижимость, Жилая недвижимость, Квартиры",
+      "category": "cat-001",
+      "section": "sec-001",
+      "subcategory": "subcat-007",
       "images": [
-        "https://example.com/image1.jpg",
+        "https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.1280.720.suffix/1689786863909.jpeg",
         "https://example.com/image1-2.jpg",
         "https://example.com/image1-3.jpg"
       ],
@@ -103,9 +109,11 @@
       "guid": "123e4567-e89b-12d3-a456-426614174011",
       "title": "Аренда офиса",
       "description": "Современный офис в центре города. Идеально подходит для малого и среднего бизнеса.",
-      "category": "Недвижимость, Коммерческая недвижимость, Офисы",
+      "category": "cat-002",
+      "section": "sec-005",
+      "subcategory": "subcat-009",
       "images": [
-        "https://example.com/image2.jpg",
+        "https://cdn.britannica.com/63/247263-050-3ABF5622/promotional-still-The-Office-Steve-Carell.jpg",
         "https://example.com/image2-2.jpg",
         "https://example.com/image2-3.jpg"
       ],
@@ -118,9 +126,11 @@
       "guid": "123e4567-e89b-12d3-a456-426614174012",
       "title": "Продажа автомобиля",
       "description": "Новый автомобиль с минимальным пробегом. Отличное состояние, один владелец.",
-      "category": "Транспорт, Автомобиль",
+      "category": "cat-01",
+      "section": "sec-001",
+      "subcategory": "subcat-011",
       "images": [
-        "https://example.com/image3.jpg",
+        "https://i.guim.co.uk/img/static/sys-images/Observer/Pix/pictures/2013/3/5/1362500388412/Camaro-008.jpg?width=465&dpr=1&s=none",
         "https://example.com/image3-2.jpg",
         "https://example.com/image3-3.jpg"
       ],

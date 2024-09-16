@@ -4,19 +4,18 @@ import { AdPageComponent } from './pages/ad-page/ad-page.component';
 
 export const routes: Routes = [
   {
+    path: 'ad',
+    title: 'Ad page',
+    loadChildren: async () => (await import('./pages/ad-page')).adPageRoutes,
+  },
+  {
+    path: ':subcategoryId',
+    title: 'Main page',
+    component: MainPageComponent,
+  },
+  {
     path: '',
     title: 'Main page',
     component: MainPageComponent,
-    children: [
-      {
-        path: ':category',
-        component: MainPageComponent,
-      },
-    ],
-  },
-  {
-    path: 'ad',
-    title: 'Ad page',
-    component: AdPageComponent,
   },
 ];

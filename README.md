@@ -2,9 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
 
+# Development process
+
+Final version of the application store in branch `main`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Json-server server
+
+Run `npm run start:server` to run json-server and get data from local server.
 
 ## Code scaffolding
 

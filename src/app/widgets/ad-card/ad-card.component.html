@@ -2,7 +2,7 @@
   [header]="card?.title"
   [subheader]="card?.amount + ' P'"
   class="ad-card"
-  [routerLink]="['ad',card?.guid]"
+  [routerLink]="['/ad',card?.guid]"
 >
   <ng-template pTemplate="header">
     <img alt="Card" [src]="card?.images[0]" class="ad-card-image" />

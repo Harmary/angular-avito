@@ -10,4 +10,5 @@ export interface AdvertDTO {
   address: string;
   date: string;
   userGuid: string;
+  phone: string;
 }

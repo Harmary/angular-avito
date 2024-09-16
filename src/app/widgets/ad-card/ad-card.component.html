@@ -1,4 +1,9 @@
-<p-card [header]="card?.title" [subheader]="card?.amount + ' P'" class="ad-card">
+<p-card
+  [header]="card?.title"
+  [subheader]="card?.amount + ' P'"
+  class="ad-card"
+  [routerLink]="['ad',card?.guid]"
+>
   <ng-template pTemplate="header">
     <img alt="Card" [src]="card?.images[0]" class="ad-card-image" />
   </ng-template>
@@ -9,3 +14,4 @@
     <small class="text-muted">{{card?.date}}</small>
   </p>
 </p-card>
+

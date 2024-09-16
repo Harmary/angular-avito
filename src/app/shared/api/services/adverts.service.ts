@@ -17,11 +17,20 @@ export class AdvertsService {
       params = params.set('subcategory', subcategoryId);
     }
 
-    return this.http.get<AdvertDTO[]>(
-      this._apiUrl,
-      {
-        params,
-      }
-    );
+    return this.http.get<AdvertDTO[]>(this._apiUrl, {
+      params,
+    });
+  }
+
+  getAdvertByID(adId?: string): Observable<AdvertDTO[]> {
+    let params = new HttpParams();
+
+    if (adId !== undefined) {
+      params = params.set('guid', adId);
+    }
+
+    return this.http.get<AdvertDTO[]>(this._apiUrl, {
+      params,
+    });
   }
 }

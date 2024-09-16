@@ -1,0 +1,43 @@
+@import "../../core/styles/functions.scss";
+
+.ad {
+  &-breadcrumbs {
+    margin-top: gridSize(7);
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      color: inherit;
+      &:hover {
+        color: var(--highlight-text-color);
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    gap: gridSize(5);
+  }
+
+  &-title {
+    font-size: gridSize(8);
+    margin-top: gridSize(4);
+  }
+
+  &-button-icon {
+    margin-right: gridSize(4);
+    font-size: gridSize(5);
+  }
+  &-galleria {
+    &-bottom-img {
+      width: gridSize(50);
+      height: gridSize(30);
+      object-fit: cover;
+    }
+    &-main-img {
+      width: gridSize(200);
+      height: gridSize(110);
+      object-fit: cover;
+    }
+  }
+}

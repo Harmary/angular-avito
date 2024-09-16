@@ -1,0 +1,49 @@
+<p class="ad-breadcrumbs">
+  <a href="">Город</a>&#10095;
+  <a href="">Категория</a>&#10095;
+  <a href="">Подкатегория</a>
+</p>
+
+<div class="ad-content">
+  <div class="ad-content-left">
+    <h3 class="ad-title">{{advert?.title}}</h3>
+
+    <p-galleria [value]="advert?.images" [numVisible]="3" class="ad-galleria">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="item" class="ad-galleria-main-img" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="">
+          <img [src]="item" class="ad-galleria-bottom-img" />
+        </div>
+      </ng-template>
+    </p-galleria>
+  </div>
+
+  <div class="ad-content-right">
+    <h3 class="ad-title ad-price">{{advert?.amount}} &#8381;</h3>
+
+    <p-button
+      class="ad-button"
+      size="large"
+      icon="pi pi-phone ad-button-icon"
+      [label]="isPhoneOpened? advert?.phone :'Показать номер телефона'"
+      (onClick)="openPhoneNumber()"
+    >
+    </p-button>
+
+    <div class="ad-content-details">
+      <div class="ad-address">
+        <h4 class="ad-subtitle">Адрес</h4>
+        <p>{{advert?.address}}</p>
+        <a href="">Открыть на карте<i class="pi pi-box-arrow-up-right "></i></a>
+      </div>
+
+      <div class="add-description">
+        <h4 class="ad-subtitle">Описание</h4>
+        <p>{{advert?.description}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

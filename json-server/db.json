@@ -97,13 +97,14 @@
       "subcategory": "subcat-007",
       "images": [
         "https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.1280.720.suffix/1689786863909.jpeg",
-        "https://example.com/image1-2.jpg",
-        "https://example.com/image1-3.jpg"
+        "https://i.pinimg.com/564x/c8/ae/ad/c8aead21b0a948c539c7261770c0c5ea.jpg",
+        "https://i.pinimg.com/564x/a7/b1/c2/a7b1c232d8d8ed48a0b27f572ad5d288.jpg"
       ],
-      "amount": "5000000",
+      "amount": "50000000",
       "address": "ул. Ленина, д. 10, кв. 5, Севастополь",
       "date": "2024-08-20",
-      "userGuid": "123e4567-e89b-12d3-a456-426614174000"
+      "userGuid": "123e4567-e89b-12d3-a456-426614174000",
+      "phone": "7-978-098-65-67"
     },
     {
       "guid": "123e4567-e89b-12d3-a456-426614174011",
@@ -120,7 +121,8 @@
       "amount": "150000",
       "address": "пр. Нахимова, д. 15, Севастополь",
       "date": "2024-08-22",
-      "userGuid": "123e4567-e89b-12d3-a456-426614174000"
+      "userGuid": "123e4567-e89b-12d3-a456-426614174000",
+      "phone": "7-978-098-65-67"
     },
     {
       "guid": "123e4567-e89b-12d3-a456-426614174012",
@@ -137,7 +139,8 @@
       "amount": "1200000",
       "address": "ул. Гагарина, д. 3, Севастополь",
       "date": "2024-08-23",
-      "userGuid": "123e4567-e89b-12d3-a456-426614174000"
+      "userGuid": "123e4567-e89b-12d3-a456-426614174000",
+      "phone": "7-978-098-65-67"
     }
   ],
   "users": [

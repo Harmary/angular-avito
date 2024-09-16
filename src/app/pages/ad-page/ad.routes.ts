@@ -3,7 +3,7 @@ import { AdPageComponent } from "./ad-page.component";
 
 export const adPageRoutes: Routes = [
   {
-    path: '',
+    path: ':adId',
     pathMatch: 'full',
     component: AdPageComponent,
   },

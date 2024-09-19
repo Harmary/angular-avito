@@ -1,7 +1,13 @@
 <div class="registration-container">
   <div class="input-group">
     <label for="username" class="font-semibold w-6rem">Номер телефона</label>
-    <input pInputText id="username" class="flex-auto" autocomplete="off" type="tel" />
+    <input pInputText id="username" [class]="validateInput(this.loginForm.controls.phone)" autocomplete="off" type="tel"
+      formControlName="phone" />
+    @if(this.loginForm.controls.phone.invalid && this.loginForm.controls.phone.touched) {
+    <small id="username-help">
+      Введите верный номер телефона
+    </small>
+    }
   </div>
 
   <div class="input-group">

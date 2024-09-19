@@ -1,12 +1,36 @@
-<div class="login-container">
+<form [formGroup]="loginForm" (ngSubmit)="handleFormSubmit()" class="login-container">
   <div class="input-group">
     <label for="username" class="font-semibold w-6rem">Номер телефона</label>
-    <input pInputText id="username" class="flex-auto" autocomplete="off" type="tel" />
+    <input
+      pInputText
+      id="username"
+      [class]="validateInput(this.loginForm.controls.phone)"
+      autocomplete="off"
+      type="tel"
+      formControlName="phone"
+    />
+    @if(this.loginForm.controls.phone.invalid && this.loginForm.controls.phone.touched) {
+    <small id="username-help">
+      Введите верный номер телефона
+    </small>
+    }
   </div>
 
   <div class="input-group">
     <label for="password" class="font-semibold w-6rem">Пароль</label>
-    <input pInputText id="password" class="flex-auto" autocomplete="off" type="password"/>
+    <input
+      pInputText
+      id="password"
+      [class]="validateInput(this.loginForm.controls.password)"
+      autocomplete="off"
+      type="password"
+      formControlName="password"
+    />
+      @if(this.loginForm.controls.password.invalid && this.loginForm.controls.password.touched) {
+      <small id="username-help">
+        Введите пароль
+      </small>
+      }
   </div>
 
   <div class="login-registration">
@@ -14,5 +38,11 @@
     <a (click)="changeForm.emit('register')">Зарегистрироваться</a>
   </div>
 
-  <p-button class="login-button" label="Войти" />
-</div>
+  <p-button
+    class="login-button"
+    label="Войти"
+    type="submit"
+    [disabled]="this.isLoading"
+    [icon]="this.isLoading ?  'pi pi-spin pi-spinner' : undefined"
+  />
+</form>

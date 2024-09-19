@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -8,6 +8,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { AuthComponent } from "../../../features/auth/auth.component";
 import { CategoriesSidebarComponent } from "../categories-sidebar/categories-sidebar.component";
 import { RouterModule } from '@angular/router';
+import { AuthService } from 'shared/api/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -26,4 +27,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+
+}

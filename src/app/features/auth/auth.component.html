@@ -1,4 +1,8 @@
-<p-button [text]="true" (onClick)="onAuthButtonClick()" label="Войти" icon="pi pi-user" />
+@if (this.user) {
+  <app-user-menu [user]="this.user"/>
+} @else {
+  <p-button [text]="true" (onClick)="onAuthButtonClick()" label="Войти" icon="pi pi-user" />
+}
 
 <p-dialog class="auth-modal" [header]="form === 'login'? 'Авторизация' : 'Регистрация'" [modal]="true" [(visible)]="visible">
   @if (form === 'login') {

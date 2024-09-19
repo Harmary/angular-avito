@@ -7,6 +7,8 @@ const server = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
+const availableRoutes = ['/categories', '/adverts'];
+
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 server.use(cors({ origin: '*' }));
@@ -15,36 +17,47 @@ server.use(cors({ origin: '*' }));
 server.use(async (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   await new Promise((res) => {
-    setTimeout(res, 800);
+    setTimeout(res, 3000);
   });
   next();
 });
 
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
+
   try {
-    const { username, password } = req.body;
-    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+    const { phone, password } = req.body;
+    const jsonDB = fs.readFileSync(path.resolve(__dirname, 'db.json'), 'utf-8');
+
+    if (!jsonDB) {
+      return res.status(500).json({ message: 'Database file is empty' });
+    }
+
+    const db = JSON.parse(jsonDB);
     const { users = [] } = db;
 
     const userFromBd = users.find(
-      (user) => user.username === username && user.password === password,
+      (user) => user.phone === phone && user.password === password,
     );
+
 
     if (userFromBd) {
       return res.json(userFromBd);
     }
 
-    return res.status(403).json({ message: 'User not found' });
+    return res.status(404).json({ message: 'User not found' });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: e.message });
   }
 });
+
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 server.use((req, res, next) => {
-  if (!req.headers.authorization) {
+  const isRouteAvailable = availableRoutes.some(routePath => req.path.includes(routePath));
+
+  if (!req.headers.authorization && !isRouteAvailable) {
     return res.status(403).json({ message: 'AUTH ERROR' });
   }
 

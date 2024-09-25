@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
 import { Form } from '../types';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -9,6 +9,7 @@ import { AuthService } from 'shared/api/services/auth.service';
 import { Router } from '@angular/router';
 import { AuthModalService } from '../auth-modal.service';
 import { AUTH_TOKEN } from 'shared/consts/storageKeys';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-registration-form',
@@ -28,6 +29,7 @@ export class RegistrationFormComponent {
   private authModalService = inject(AuthModalService);
   private router = inject(Router);
   readonly validateInput = validateInput;
+  destroyRef = inject(DestroyRef);
   isLoading = false;
   registrationForm = new FormGroup({
     phone: new FormControl('', {
@@ -49,8 +51,6 @@ export class RegistrationFormComponent {
     }),
   });
 
-
-
   handleFormSubmit() {
     if (this.registrationForm.invalid) {
       this.registrationForm.markAsTouched();
@@ -61,9 +61,10 @@ export class RegistrationFormComponent {
 
     this.authService
       .registration(this.registrationForm.getRawValue())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response) => {
-          localStorage.setItem(AUTH_TOKEN, response.guid)
+          localStorage.setItem(AUTH_TOKEN, response.guid);
           this.isLoading = false;
           this.authModalService.close();
           this.router.navigate(['profile', response.guid]);

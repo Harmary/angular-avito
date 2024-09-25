@@ -7,7 +7,8 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { AuthModalService } from './auth-modal.service';
 import { AuthService } from 'shared/api/services/auth.service';
 import { RouterLink } from '@angular/router';
-import { UserMenuComponent } from "./user-menu/user-menu.component";
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-auth',
@@ -32,14 +33,18 @@ export class AuthComponent {
   isLoading?: boolean = undefined;
 
   constructor() {
-    this.authModalService.isOpen$.subscribe((isOpen) => {
-      this.visible = isOpen;
-    });
+    this.authModalService.isOpen$
+      .pipe(takeUntilDestroyed())
+      .subscribe((isOpen) => {
+        this.visible = isOpen;
+      });
 
-    this.authService.authState$.subscribe((state) => {
-      this.user = state.user;
-      this.isLoading = state.isLoading;
-    });
+    this.authService.authState$
+      .pipe(takeUntilDestroyed())
+      .subscribe((state) => {
+        this.user = state.user;
+        this.isLoading = state.isLoading;
+      });
 
     this.authService.isAuthorized();
   }

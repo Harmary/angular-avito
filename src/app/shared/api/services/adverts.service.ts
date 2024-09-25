@@ -10,11 +10,11 @@ export class AdvertsService {
   readonly http = inject(HttpClient);
   private _apiUrl = 'http://localhost:8000/adverts';
 
-  getAdverts(subcategoryId?: string): Observable<AdvertDTO[]> {
+  getAdverts(type: string, id?: string): Observable<AdvertDTO[]> {
     let params = new HttpParams();
 
-    if (subcategoryId !== undefined) {
-      params = params.set('subcategory', subcategoryId);
+    if (id !== undefined) {
+      params = params.set(type, id);
     }
 
     return this.http.get<AdvertDTO[]>(this._apiUrl, {

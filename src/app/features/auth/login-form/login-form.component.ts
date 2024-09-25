@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputTextModule } from 'primeng/inputtext';
@@ -14,6 +14,7 @@ import { AuthService } from 'shared/api/services/auth.service';
 import { Router } from '@angular/router';
 import { AUTH_TOKEN } from 'shared/consts/storageKeys';
 import { AuthModalService } from '../auth-modal.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-login-form',
@@ -31,6 +32,7 @@ export class LoginFormComponent {
   @Output() changeForm = new EventEmitter<Form>();
   private authService = inject(AuthService);
   private authModalService = inject(AuthModalService);
+  destroyRef = inject(DestroyRef);
   private router = inject(Router);
   isLoading = false;
   readonly validateInput = validateInput;
@@ -53,16 +55,19 @@ export class LoginFormComponent {
 
     this.isLoading = true;
 
-    this.authService.login(this.loginForm.getRawValue()).subscribe({
-      next: (response) => {
-        this.isLoading = false;
-        localStorage.setItem(AUTH_TOKEN, response.guid);
-        this.router.navigate(['profile', response.guid]);
-        this.authModalService.close();
-      },
-      error: () => {
-        this.isLoading = false;
-      },
-    });
+    this.authService
+      .login(this.loginForm.getRawValue())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (response) => {
+          this.isLoading = false;
+          localStorage.setItem(AUTH_TOKEN, response.guid);
+          this.router.navigate(['profile', response.guid]);
+          this.authModalService.close();
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+      });
   }
 }

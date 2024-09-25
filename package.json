@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@types/lodash": "^4.17.9",
     "json-server": "^0.17.3",
     "lodash": "^4.17.21",
     "primeicons": "^7.0.0",

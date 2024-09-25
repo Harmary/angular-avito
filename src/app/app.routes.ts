@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: 'profile/:guid',
     title: 'Profile page',
     component: ProfilePageComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ad',
@@ -21,7 +21,17 @@ export const routes: Routes = [
     loadChildren: async () => (await import('./pages/ad-page')).adPageRoutes,
   },
   {
-    path: ':subcategoryId',
+    path: ':categoryId',
+    title: 'Main page',
+    component: MainPageComponent,
+  },
+  {
+    path: ':categoryId/:sectionId',
+    title: 'Main page',
+    component: MainPageComponent,
+  },
+  {
+    path: ':categoryId/:sectionId/:subcategoryId',
     title: 'Main page',
     component: MainPageComponent,
   },

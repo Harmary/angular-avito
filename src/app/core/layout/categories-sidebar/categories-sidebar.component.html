@@ -15,18 +15,21 @@
 
     <div class="subcategories">
       @if (showSections) {
-      @for (item of sections; track $index) {
-      <div class="subcategory">
+        @for(category of categories; track $index) {
+          @for (section of category.sections; track $index) {
+            <div class="subcategory">
 
-        <h4 class="subcategory-title">{{item.name}}</h4>
-        @for (subcategory of item.subcategories; track $index) {
-        <a class="subcategory-option" [routerLink]="['/', subcategory.guid]">
-          {{subcategory.name}}
-        </a>
-        }
-      </div>
+              <h4 class="subcategory-title">{{section.name}}</h4>
+                @for (subcategory of section.subcategories; track $index) {
+                <a class="subcategory-option" [routerLink]="['/', category.guid, section.guid, subcategory.guid]">
+                  {{subcategory.name}}
+                </a>
+                }
+            </div>
+          }
       }
       }
+
     </div>
 
   </div>

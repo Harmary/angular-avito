@@ -29,6 +29,7 @@ export class AuthComponent {
   private authService = inject(AuthService);
   form: Form = 'login';
   user?: User = undefined;
+  isLoading?: boolean = undefined;
 
   constructor() {
     this.authModalService.isOpen$.subscribe((isOpen) => {
@@ -37,7 +38,10 @@ export class AuthComponent {
 
     this.authService.authState$.subscribe((state) => {
       this.user = state.user;
+      this.isLoading = state.isLoading;
     });
+
+    this.authService.isAuthorized();
   }
 
   changeForm(formType: Form) {

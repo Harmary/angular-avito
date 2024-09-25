@@ -17,7 +17,7 @@ server.use(cors({ origin: '*' }));
 server.use(async (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   await new Promise((res) => {
-    setTimeout(res, 3000);
+    setTimeout(res, 1000);
   });
   next();
 });

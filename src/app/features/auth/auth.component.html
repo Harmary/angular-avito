@@ -1,7 +1,12 @@
 @if (this.user) {
   <app-user-menu [user]="this.user"/>
 } @else {
-  <p-button [text]="true" (onClick)="onAuthButtonClick()" label="Войти" icon="pi pi-user" />
+  <p-button
+    [text]="true"
+    (onClick)="onAuthButtonClick()"
+    [label]="this.isLoading ? 'Загрузка' : 'Войти'"
+    [icon]="this.isLoading ? 'pi pi-spin pi-spinner' : 'pi pi-user'"
+  />
 }
 
 <p-dialog class="auth-modal" [header]="form === 'login'? 'Авторизация' : 'Регистрация'" [modal]="true" [(visible)]="visible">

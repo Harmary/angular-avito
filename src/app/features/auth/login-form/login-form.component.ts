@@ -60,7 +60,7 @@ export class LoginFormComponent {
         this.router.navigate(['profile', response.guid]);
         this.authModalService.close();
       },
-      error: (error) => {
+      error: () => {
         this.isLoading = false;
       },
     });

@@ -1,9 +1,17 @@
-<div class="registration-container">
+<form class="registration-container" (ngSubmit)="handleFormSubmit()" [formGroup]="registrationForm">
   <div class="input-group">
-    <label for="username" class="font-semibold w-6rem">Номер телефона</label>
-    <input pInputText id="username" [class]="validateInput(this.loginForm.controls.phone)" autocomplete="off" type="tel"
-      formControlName="phone" />
-    @if(this.loginForm.controls.phone.invalid && this.loginForm.controls.phone.touched) {
+    <label for="phone" class="font-semibold w-6rem">Номер телефона</label>
+
+    <input
+      pInputText
+      id="phone"
+      [class]="validateInput(this.registrationForm.controls.phone)"
+      autocomplete="off"
+      type="tel"
+      formControlName="phone"
+    />
+
+    @if(this.registrationForm.controls.phone.invalid && this.registrationForm.controls.phone.touched) {
     <small id="username-help">
       Введите верный номер телефона
     </small>
@@ -12,12 +20,40 @@
 
   <div class="input-group">
     <label for="name" class="font-semibold w-6rem">Имя</label>
-    <input pInputText id="name" class="flex-auto" autocomplete="off" type="text"/>
+
+    <input
+      pInputText
+      id="name"
+      [class]="validateInput(this.registrationForm.controls.name)"
+      autocomplete="off"
+      type="text"
+      formControlName="name"
+    />
+
+    @if(this.registrationForm.controls.phone.invalid && this.registrationForm.controls.phone.touched) {
+      <small id="username-help">
+        Введите имя
+      </small>
+    }
   </div>
 
   <div class="input-group">
     <label for="password" class="font-semibold w-6rem">Пароль</label>
-    <input pInputText id="password" class="flex-auto" autocomplete="off" type="password"/>
+
+    <input
+      pInputText
+      id="password"
+      [class]="validateInput(this.registrationForm.controls.password)"
+      autocomplete="off"
+      type="password"
+      formControlName="password"
+    />
+
+    @if(this.registrationForm.controls.password.invalid && this.registrationForm.controls.password.touched) {
+      <small id="username-help">
+        Введите пароль
+      </small>
+    }
   </div>
 
   <div class="registration-login">
@@ -26,5 +62,10 @@
   </div>
 
 
-  <p-button class="registration-button" label="Зарегистрироваться" />
-</div>
+  <p-button
+    class="registration-button"
+    label="Зарегистрироваться"
+    type="submit" [disabled]="this.isLoading"
+    [icon]="this.isLoading ?  'pi pi-spin pi-spinner' : undefined"
+  />
+</form>

@@ -164,6 +164,13 @@
       "phone": "73435550123",
       "address": "ул. Гагарина, д. 5, Екатеринбург, Россия",
       "password": "password123"
+    },
+    {
+      "guid": "7062ba6c-c70a-493e-84dd-ed3c2a6b90cc",
+      "name": "Мария Харламова",
+      "phone": "89876543234",
+      "address": "",
+      "password": "mypasswordiscool"
     }
   ]
 }

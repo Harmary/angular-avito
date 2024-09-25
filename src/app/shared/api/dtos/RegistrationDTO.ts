@@ -3,3 +3,11 @@ export interface RegistrationDTO {
   name: string;
   password: string;
 }
+
+export interface RegistrationResponseDTO {
+  guid: string;
+  name: string;
+  phone: string;
+  address: string;
+  password: string;
+}

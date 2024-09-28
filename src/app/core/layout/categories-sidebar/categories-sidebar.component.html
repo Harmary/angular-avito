@@ -2,35 +2,58 @@
   (onClick)="op.toggle($event);" />
 
 <p-overlayPanel #op (onHide)="toggleCategories()" (onShow)="toggleCategories()">
-  <div class="sidebar-wrapper">
-    <div class="categories">
-      <p-listbox [options]="categories" optionLabel="name" (onClick)="openSections($event)" [style]="{ border: 'none'}">
-        <ng-template let-categories pTemplate="item">
-          <div class="category">
-            <h3 class="category-title">{{ categories.name }}</h3><i class="pi pi-angle-right"></i>
-          </div>
-        </ng-template>
-      </p-listbox>
-    </div>
+  @if(this.requestState.isLoading) {
+    <i class="pi pi-spin pi-spinner"></i>
+  }
+  @if (this.requestState.data && !this.requestState.isLoading) {
+    <div class="sidebar-wrapper">
+      <div class="categories">
+        <p-listbox
+          [options]="this.requestState.data"
+          optionLabel="name"
+          (onClick)="openSections($event)"
+          [style]="{ border: 'none'}"
+        >
+          <ng-template let-categories pTemplate="item">
+            <div class="category">
+              <h3 class="category-title">{{ categories.name }}</h3><i class="pi pi-angle-right"></i>
+            </div>
+          </ng-template>
+        </p-listbox>
+      </div>
 
-    <div class="subcategories">
-      @if (showSections) {
-        <h2 class="category-title"><a class="sidebar-link" [routerLink]="['/', selectedCategory?.guid]">{{selectedCategory?.name}}</a></h2>
+      <div class="subcategories">
+        @if (showSections) {
+          <h2 class="category-title"><a class="sidebar-link"
+              [routerLink]="['/', selectedCategory?.guid]">{{selectedCategory?.name}}</a></h2>
 
-        @for (section of selectedCategory?.sections; track $index) {
-        <div class="subcategory">
-          <h4 class="subcategory-title"><a class="sidebar-link" [routerLink]="['/', selectedCategory?.guid, section.guid]">{{section.name}}</a></h4>
-          @for (subcategory of section.subcategories; track $index) {
-          <a class="subcategory-option sidebar-link" [routerLink]="['/', selectedCategory?.guid, section.guid, subcategory.guid]">
-            {{subcategory.name}}
-          </a>
+          @for (section of selectedCategory?.sections; track $index) {
+            <div class="subcategory">
+              <h4 class="subcategory-title">
+                <a
+                  class="sidebar-link"
+                  [routerLink]="['/', selectedCategory?.guid, section.guid]"
+                >
+                {{section.name}}
+                </a>
+              </h4>
+              @for (subcategory of section.subcategories; track $index) {
+                <a
+                  class="subcategory-option sidebar-link"
+                  [routerLink]="['/', selectedCategory?.guid, section.guid, subcategory.guid]"
+                >
+                  {{subcategory.name}}
+                </a>
+              }
+            </div>
           }
-        </div>
         }
-      }
-
+      </div>
     </div>
+  }
+  @if(this.requestState.error) {
+    <p>{{this.requestState.error}}</p>
+  }
 
-  </div>
 
 </p-overlayPanel>

@@ -1,29 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { CategoriesService } from '../../../shared/api/services';
 import { Subscription } from 'rxjs';
-
-interface Category {
-  guid: string;
-  name: string;
-  sections: Section[];
-}
-
-interface Section {
-  guid: string;
-  name: string;
-  subcategories: Subcategory[];
-}
-
-interface Subcategory {
-  guid: string;
-  name: string;
-}
+import { Category } from './types';
+import { CategoriesService } from 'shared/api/services';
+import { RequestState } from 'shared/types/RequestState';
 
 @Component({
   selector: 'app-categories-sidebar',
@@ -42,19 +27,28 @@ interface Subcategory {
 export class CategoriesSidebarComponent {
   private subscription: Subscription = new Subscription();
   categoriesService = inject(CategoriesService);
-  categories: Category[] = [];
+  requestState: RequestState<Category[]> = {
+    data: [],
+    isLoading: false,
+    error: undefined
+  };
   showCategories: boolean = false;
   showSections: boolean = false;
-  selectedCategory: Category | undefined;
+  selectedCategory?: Category;
 
   constructor() {
+    this.requestState.isLoading = true;
+    this.requestState.error = undefined;
+
     this.subscription.add(
       this.categoriesService.getCategories().subscribe({
         next: (data) => {
-          this.categories = data;
+          this.requestState.data = data;
+          this.requestState.isLoading = false;
         },
         error: (error) => {
-          console.error('Error fetching categories:', error);
+          this.requestState.isLoading = false;
+          this.requestState.error = error.statusText;
         },
       })
     );
@@ -71,7 +65,7 @@ export class CategoriesSidebarComponent {
   openSections(event: any) {
     const { option } = event;
     this.showSections = true;
-    this.selectedCategory = this.categories.find(
+    this.selectedCategory = this.requestState?.data?.find(
       (category) => category.guid === option.guid
     );
   }

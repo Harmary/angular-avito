@@ -8,6 +8,23 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { CategoriesService } from '../../../shared/api/services';
 import { Subscription } from 'rxjs';
 
+interface Category {
+  guid: string;
+  name: string;
+  sections: Section[];
+}
+
+interface Section {
+  guid: string;
+  name: string;
+  subcategories: Subcategory[];
+}
+
+interface Subcategory {
+  guid: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-categories-sidebar',
   standalone: true,
@@ -25,10 +42,10 @@ import { Subscription } from 'rxjs';
 export class CategoriesSidebarComponent {
   private subscription: Subscription = new Subscription();
   categoriesService = inject(CategoriesService);
-  categories: any[] = [];
+  categories: Category[] = [];
   showCategories: boolean = false;
   showSections: boolean = false;
-  sections: any = [];
+  selectedCategory: Category | undefined;
 
   constructor() {
     this.subscription.add(
@@ -54,8 +71,8 @@ export class CategoriesSidebarComponent {
   openSections(event: any) {
     const { option } = event;
     this.showSections = true;
-    this.sections = this.categories.find(
+    this.selectedCategory = this.categories.find(
       (category) => category.guid === option.guid
-    ).sections;
+    );
   }
 }

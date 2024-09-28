@@ -1,12 +1,22 @@
 @import "../../styles/functions.scss";
 
-.sidebar-wrapper {
-  display: flex;
-  flex-direction: row;
+.sidebar {
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  &-link {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        color: var(--highlight-text-color);
+      }
+  }
 }
 
 .category {
-  min-width:  gridSize(50);
+  min-width: gridSize(50);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,23 +32,16 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: gridSize(5);
-
 }
 
 .subcategory {
-    &-title {
+  &-title {
     margin: 0 0 gridSize(3);
+
   }
 
   &-option {
     display: block;
-    text-decoration: none;
-    color: inherit;
     margin: gridSize(2) 0;
-
-    &:hover {
-      color: var(--highlight-text-color)
-    }
-
   }
 }

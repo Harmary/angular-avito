@@ -5,10 +5,9 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { AuthComponent } from "../../../features/auth/auth.component";
+import { AuthComponent } from "features/auth/auth.component";
 import { CategoriesSidebarComponent } from "../categories-sidebar/categories-sidebar.component";
 import { RouterModule } from '@angular/router';
-import { AuthService } from 'shared/api/services/auth.service';
 
 @Component({
   selector: 'app-header',

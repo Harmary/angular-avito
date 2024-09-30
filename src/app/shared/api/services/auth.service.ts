@@ -5,9 +5,10 @@ import { LoginDTO, RegistrationDTO } from '../dtos';
 import { LoginResponseDTO } from '../dtos/LoginDTO';
 import { AUTH_TOKEN } from 'shared/consts/storageKeys';
 import { RegistrationResponseDTO } from '../dtos/RegistrationDTO';
+import { UserDTO } from '../dtos/UserDTO';
 
 export interface AuthorizationState {
-  user?: LoginResponseDTO;
+  user?: UserDTO;
   isAuthorized: boolean;
   isLoading?: boolean;
   error?: string;
@@ -102,5 +103,13 @@ export class AuthService {
         )
         .subscribe();
     }
+  }
+
+  updateUserState(user: LoginResponseDTO):void {
+    this._stateSubject.next({
+      isAuthorized: true,
+      user: user,
+      isLoading: false,
+    });
   }
 }

@@ -87,7 +87,7 @@ export class ProfilePageComponent {
     }
     this.profileService
       .updateUser({
-        ...this.user,
+        ...this.user!,
         ...this.userForm.getRawValue(),
       })
       .subscribe();

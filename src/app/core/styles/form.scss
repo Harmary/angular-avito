@@ -1,13 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: gridSize(4);
+}
+
 .input-group,
 .button-group {
   display: flex;
   gap: 4px;
 }
 
-.input-group {
-  flex-direction: column;
+.input {
+  &-group {
+    flex-direction: column;
+  }
+  &-label {
+    font-weight: 500;
+  }
 }
 
 .button-group {
   flex-direction: row;
+}
+
+.helper-text {
+
+}
+.text-red {
+  color: #ff6767;
 }

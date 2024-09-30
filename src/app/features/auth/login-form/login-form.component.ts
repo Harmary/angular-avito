@@ -61,8 +61,8 @@ export class LoginFormComponent {
       .subscribe({
         next: (response) => {
           this.isLoading = false;
-          localStorage.setItem(AUTH_TOKEN, response.guid);
-          this.router.navigate(['profile', response.guid]);
+          localStorage.setItem(AUTH_TOKEN, response.id);
+          this.router.navigate(['profile', response.id]);
           this.authModalService.close();
         },
         error: () => {

@@ -64,10 +64,10 @@ export class RegistrationFormComponent {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response) => {
-          localStorage.setItem(AUTH_TOKEN, response.guid);
+          localStorage.setItem(AUTH_TOKEN, response.id);
           this.isLoading = false;
           this.authModalService.close();
-          this.router.navigate(['profile', response.guid]);
+          this.router.navigate(['profile', response.id]);
         },
         error: () => {
           this.isLoading = false;

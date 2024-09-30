@@ -4,7 +4,8 @@ export interface LoginDTO {
 }
 
 export interface LoginResponseDTO {
-  guid: string;
+  id: string;
+  avatar: string;
   name: string;
   phone: string;
   address: string;

@@ -79,7 +79,7 @@ export class AuthService {
     if (token) {
       let params = new HttpParams();
 
-      params = params.set('guid', token);
+      params = params.set('id', token);
 
       this._stateSubject.next({
         isAuthorized: true,

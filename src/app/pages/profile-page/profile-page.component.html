@@ -1,1 +1,48 @@
-<p>profile-page works!</p>
+<div style="width: 100%;">
+<h2>Профиль</h2>
+
+<div class="profile">
+  <img [ngSrc]="this.user?.avatar ?? '../../shared/assets/imgs/avatar.jpg'" alt="avatar" width="200" height="200"
+    class="profile-avatar" priority />
+
+  @if(this.readonly) {
+  <div class="profile-form">
+    <h3>{{this.userForm.controls.name.value}}</h3>
+
+    <div class="profile-field">
+      <p><span class="profile-field-title">Tелефон</span>: {{this.userForm.controls.phone.value}}</p>
+    </div>
+
+    <div class="profile-field">
+      <p><span class="profile-field-title">Адрес</span>: {{this.userForm.controls.address.value}}</p>
+    </div>
+
+    <p-button class="profile-button" label="Редактировать" (onClick)="editProfile()" />
+  </div>
+
+
+  }
+  @else {
+  <form class="profile-form form" [formGroup]="userForm" (ngSubmit)="saveProfile()">
+
+    @for(field of arrayFromObject(userForm.controls); track $index) {
+    <div class="input-group">
+      <label [for]="field.name" class="input-label">{{formLabels[field.name]}}</label>
+
+      <input pInputText [id]="field.name" [defaultValue]="field.value" [class]="validateInput(field.value)"
+        autocomplete="off" type="text" [formControlName]="field.name" />
+
+      @if(field.value.invalid && field.value.touched) {
+      <small class="helper-text text-red">
+        {{formValidationMessages[field.name]}}
+      </small>
+      }
+    </div>
+    }
+
+    <p-button label="Сохранить" type="submit" />
+  </form>
+  }
+</div>
+
+</div>

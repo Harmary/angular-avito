@@ -1,6 +1,7 @@
 export type Form = 'login' | 'register';
 export type User = {
-  guid: string;
+  id: string;
+  avatar: string;
   name: string;
   phone: string;
   address: string;

@@ -1,0 +1,34 @@
+@import "../../core/styles/functions.scss";
+@import "../../core/styles/form.scss";
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  gap: gridSize(7);
+  margin-top: gridSize(3);
+
+  &-field {
+    p {
+      margin: gridSize(2) 0;
+    }
+  }
+
+  &-field-title {
+    font-weight: 700;
+  }
+
+  &-button {
+    margin-top: gridSize(4);
+  }
+
+  &-avatar {
+    border-radius: gridSize(50);
+  }
+
+  &-form {
+    width: gridSize(150);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}

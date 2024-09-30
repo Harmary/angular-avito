@@ -5,7 +5,8 @@ export interface RegistrationDTO {
 }
 
 export interface RegistrationResponseDTO {
-  guid: string;
+  id: string;
+  avatar: string;
   name: string;
   phone: string;
   address: string;

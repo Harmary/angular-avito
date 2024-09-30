@@ -145,31 +145,35 @@
   ],
   "users": [
     {
-      "guid": "123e4567-e89b-12d3-a456-426614174000",
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "avatar": "https://static.wikia.nocookie.net/redbook/images/6/61/8bc157d0edf8ca76f58fdcea0befd169.jpg/revision/latest/thumbnail/width/360/height/450?cb=20170128203259&path-prefix=ru",
       "name": "Иван Иванов",
       "phone": "74955550173",
       "address": "ул. Ленина, д. 1, Москва, Россия",
       "password": "mypassword"
     },
     {
-      "guid": "123e4567-e89b-12d3-a456-426614174001",
+      "id": "123e4567-e89b-12d3-a456-426614174001",
+      "avatar": "https://static.wikia.nocookie.net/redbook/images/6/61/8bc157d0edf8ca76f58fdcea0befd169.jpg/revision/latest/thumbnail/width/360/height/450?cb=20170128203259&path-prefix=ru",
       "name": "Мария Смирнова",
       "phone": "78125550198",
       "address": "ул. Пушкина, д. 10, Санкт-Петербург, Россия",
       "password": "securePassword"
     },
     {
-      "guid": "123e4567-e89b-12d3-a456-426614174002",
+      "id": "123e4567-e89b-12d3-a456-426614174002",
+      "avatar": "https://static.wikia.nocookie.net/redbook/images/6/61/8bc157d0edf8ca76f58fdcea0befd169.jpg/revision/latest/thumbnail/width/360/height/450?cb=20170128203259&path-prefix=ru",
       "name": "Алексей Петров",
       "phone": "73435550123",
       "address": "ул. Гагарина, д. 5, Екатеринбург, Россия",
       "password": "password123"
     },
     {
-      "guid": "7062ba6c-c70a-493e-84dd-ed3c2a6b90cc",
+      "id": "7062ba6c-c70a-493e-84dd-ed3c2a6b90cc",
+      "avatar": "https://sun9-34.userapi.com/impg/-En0Sbls7CrqvK9EqO32VAXDP1rx6CmtP2KcUw/hppQVsY8mvk.jpg?size=882x1080&quality=96&sign=f7dd1b1a9ef6054caa17aa9e12465daf&type=album",
       "name": "Мария Харламова",
-      "phone": "89876543234",
-      "address": "",
+      "phone": "+79876543234",
+      "address": "Севастополь, ул. Ленина",
       "password": "mypasswordiscool"
     }
   ]

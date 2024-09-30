@@ -72,7 +72,7 @@ server.post('/registration', (req, res) => {
     }
 
     const newUser = {
-      guid: uuidv4(),
+      id: uuidv4(),
       name: name || '',
       phone: phone || '',
       address: '',

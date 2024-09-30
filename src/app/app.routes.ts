@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path: 'profile/:guid',
+    path: 'profile/:id',
     title: 'Profile page',
     component: ProfilePageComponent,
     canActivate: [authGuard],

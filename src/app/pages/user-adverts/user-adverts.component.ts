@@ -4,11 +4,12 @@ import { switchMap } from 'rxjs';
 import { AdvertsService } from 'shared/api/services';
 import { AuthService } from 'shared/api/services/auth.service';
 import { Advert } from 'widgets/ad-card';
+import { AdCardComponent } from 'widgets/ad-card/ad-card.component';
 
 @Component({
   selector: 'app-user-adverts',
   standalone: true,
-  imports: [],
+  imports: [AdCardComponent],
   templateUrl: './user-adverts.component.html',
   styleUrl: './user-adverts.component.scss',
 })

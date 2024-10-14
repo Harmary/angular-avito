@@ -1,2 +1,7 @@
 <h2>Мои объявления</h2>
 
+<div class="adverts-cards-wrapper">
+  @for (card of adverts; track $index) {
+  <app-ad-card [card]="card" class="ma" [readonly]="false"></app-ad-card>
+  }
+</div>

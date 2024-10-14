@@ -62,7 +62,7 @@ export class AdvertsService {
   }
 
   submitAdvert(data: SubmitAdvertDTO): Observable<AdvertDTO> {
-    let payload = {
+    const payload = {
       ...data,
       price: String(data.price),
       date: dayjs().format('DD-MM-YYYY'),

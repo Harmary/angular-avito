@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { Advert } from './types';
 
 @Component({
   selector: 'app-ad-card',
@@ -17,5 +18,6 @@ import { CardModule } from 'primeng/card';
   styleUrl: './ad-card.component.scss',
 })
 export class AdCardComponent {
-  @Input() card: any;
+  @Input() card?: Advert;
+  @Input() readonly: boolean = true;
 }

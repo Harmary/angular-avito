@@ -1,0 +1,12 @@
+@import "../../core/styles/functions.scss";
+
+.adverts {
+   &-cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: gridSize(6);
+    margin-bottom: gridSize(5);
+  }
+}

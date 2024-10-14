@@ -1,17 +1,21 @@
-<p-card
-  [header]="card?.title"
-  [subheader]="card?.price + ' P'"
-  class="ad-card"
-  [routerLink]="['/ad',card?.id]"
->
+<p-card [header]="card?.title" [subheader]="card?.price + ' P'" class="ad-card" [routerLink]="['/ad',card?.id]">
   <ng-template pTemplate="header">
-    <img alt="Card" [src]="card?.images[0]" class="ad-card-image" />
+    <img alt="Card" [src]="card?.images ?? card?.images![0]" class="ad-card-image" />
   </ng-template>
-  <p class="ad-card-address">
-    <small class="text-muted">{{card?.address}}</small>
-  </p>
-  <p class="ad-card-date">
-    <small class="text-muted">{{card?.date}}</small>
-  </p>
-</p-card>
 
+  <div class="ad-card-info-wrapper">
+    <div>
+      <p class="ad-card-address">
+        <small class="text-muted">{{card?.address}}</small>
+      </p>
+      <p class="ad-card-date">
+        <small class="text-muted">{{card?.date}}</small>
+      </p>
+    </div>
+
+    @if(!readonly) {
+    <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" [routerLink]="['/editad',card?.id]" />
+    }
+  </div>
+
+</p-card>

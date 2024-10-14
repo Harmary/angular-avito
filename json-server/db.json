@@ -429,7 +429,7 @@
   ],
   "adverts": [
     {
-      "guid": "123e4567-e89b-12d3-a456-426614174010",
+      "id": "123e4567-e89b-12d3-a456-426614174010",
       "title": "Продажа квартиры",
       "description": "Просторная трехкомнатная квартира с видом на море. Полностью меблирована и готова к заселению.",
       "category": "cat-001",
@@ -440,43 +440,39 @@
         "https://i.pinimg.com/564x/c8/ae/ad/c8aead21b0a948c539c7261770c0c5ea.jpg",
         "https://i.pinimg.com/564x/a7/b1/c2/a7b1c232d8d8ed48a0b27f572ad5d288.jpg"
       ],
-      "amount": "50000000",
+      "price": "50000000",
       "address": "ул. Ленина, д. 10, кв. 5, Севастополь",
       "date": "2024-08-20",
       "userGuid": "123e4567-e89b-12d3-a456-426614174000",
       "phone": "7-978-098-65-67"
     },
     {
-      "guid": "123e4567-e89b-12d3-a456-426614174011",
+      "id": "123e4567-e89b-12d3-a456-426614174011",
       "title": "Аренда офиса",
       "description": "Современный офис в центре города. Идеально подходит для малого и среднего бизнеса.",
       "category": "cat-002",
       "section": "sec-005",
       "subcategory": "subcat-009",
       "images": [
-        "https://cdn.britannica.com/63/247263-050-3ABF5622/promotional-still-The-Office-Steve-Carell.jpg",
-        "https://example.com/image2-2.jpg",
-        "https://example.com/image2-3.jpg"
+        "https://0d314c86-f76b-45cc-874e-45816116a667.selcdn.net/26cf568f-c495-4950-8d79-0f36b97810f0.jpeg"
       ],
-      "amount": "150000",
+      "price": "150000",
       "address": "пр. Нахимова, д. 15, Севастополь",
       "date": "2024-08-22",
       "userGuid": "123e4567-e89b-12d3-a456-426614174002",
       "phone": "7-978-098-65-67"
     },
     {
-      "guid": "123e4567-e89b-12d3-a456-426614174012",
+      "id": "123e4567-e89b-12d3-a456-426614174012",
       "title": "Продажа автомобиля",
       "description": "Новый автомобиль с минимальным пробегом. Отличное состояние, один владелец.",
       "category": "cat-01",
       "section": "sec-001",
       "subcategory": "subcat-011",
       "images": [
-        "https://i.guim.co.uk/img/static/sys-images/Observer/Pix/pictures/2013/3/5/1362500388412/Camaro-008.jpg?width=465&dpr=1&s=none",
-        "https://example.com/image3-2.jpg",
-        "https://example.com/image3-3.jpg"
+        "https://i.guim.co.uk/img/static/sys-images/Observer/Pix/pictures/2013/3/5/1362500388412/Camaro-008.jpg?width=465&dpr=1&s=none"
       ],
-      "amount": "1200000",
+      "price": "1200000",
       "address": "ул. Гагарина, д. 3, Севастополь",
       "date": "2024-08-23",
       "userGuid": "123e4567-e89b-12d3-a456-426614174002",

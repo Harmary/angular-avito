@@ -10,7 +10,7 @@ export interface Section {
   subcategories: Subcategory[];
 }
 
-export interface Subcategory {
+export type Subcategory = {
   guid: string;
   name: string;
 }

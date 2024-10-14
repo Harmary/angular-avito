@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { environment } from 'shared/environments/environments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriesService {
-  private _apiUrl = 'http://localhost:8000/categories';
+  private _apiUrl = `${environment.apiUrl}categories`;
 
   constructor(private http: HttpClient) {}
 
@@ -15,30 +16,27 @@ export class CategoriesService {
   }
 
   getCategoryById(id: string): Observable<CategoryDTO> {
-
-    return this.http
-      .get<any>(this._apiUrl)
-      .pipe(
-        map((data) => {
-          for (let category of data) {
-            if (category.guid === id) {
-              return category;
+    return this.http.get<any>(this._apiUrl).pipe(
+      map((data) => {
+        for (let category of data) {
+          if (category.guid === id) {
+            return category;
+          }
+          for (let section of category.sections) {
+            if (section.guid === id) {
+              return section;
             }
-            for(let section of category.sections) {
-             if (section.guid === id) {
-               return section;
-             }
-             for (let subcategory of section.subcategories) {
-               if (subcategory.guid === id) {
-                 return subcategory;
-               }
-             }
+            for (let subcategory of section.subcategories) {
+              if (subcategory.guid === id) {
+                return subcategory;
+              }
             }
           }
+        }
 
-          return undefined;
-        })
-      );
+        return undefined;
+      })
+    );
   }
 }
 

@@ -23,7 +23,7 @@ export class UserMenuComponent {
       label: 'Профиль',
       icon: 'pi pi-user',
       command: () => {
-        this.router.navigate(['profile', this.user?.id]);
+        this.router.navigate(['profile']);
       },
     },
     {
@@ -33,7 +33,7 @@ export class UserMenuComponent {
       label: 'Мои Объявления',
       icon: 'pi pi-folder',
       command: () => {
-        this.router.navigate(['profile', this.user?.id]);
+        this.router.navigate(['adverts']);
       },
     },
     {

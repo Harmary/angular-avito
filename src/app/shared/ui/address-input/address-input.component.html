@@ -1,0 +1,22 @@
+<div class="input-group" [formGroup]="formGroup">
+  <label for="address" class="input-label">Адрес</label>
+
+  <p-autoComplete
+    [style]="{'width':'100%'}"
+    [inputStyle]="{'width':'100%'}"
+    [class]="validateInput(formGroup.controls['address'])"
+    formControlName="address"
+    [suggestions]="suggestions"
+    (input)="onChange($event)"
+    (onSelect)="onSelect($event)"
+    optionLabel="value"
+    emptyMessage="Не найдено"
+  />
+
+  @if(formGroup.controls['address'].invalid && formGroup.controls['address'].touched) {
+    <small>
+      Введите адрес
+    </small>
+  }
+
+</div>

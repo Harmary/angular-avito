@@ -6,6 +6,7 @@ import { LoginResponseDTO } from '../dtos/LoginDTO';
 import { AUTH_TOKEN } from 'shared/consts/storageKeys';
 import { RegistrationResponseDTO } from '../dtos/RegistrationDTO';
 import { UserDTO } from '../dtos/UserDTO';
+import { environment } from 'shared/environments/environments';
 
 export interface AuthorizationState {
   user?: UserDTO;
@@ -19,9 +20,9 @@ export interface AuthorizationState {
 })
 export class AuthService {
   readonly http = inject(HttpClient);
-  private _loginUrl = 'http://localhost:8000/login';
-  private _registartionUrl = 'http://localhost:8000/registration';
-  private _selectUserUrl = 'http://localhost:8000/users';
+  private _loginUrl = `${environment.apiUrl}login`;
+  private _registartionUrl = `${environment.apiUrl}registration`;
+  private _selectUserUrl = `${environment.apiUrl}users`;
   private _stateSubject = new ReplaySubject<AuthorizationState>(1);
 
   readonly authState$ = this._stateSubject.asObservable();
@@ -53,7 +54,6 @@ export class AuthService {
   }
 
   registration(params: RegistrationDTO): Observable<RegistrationResponseDTO> {
-
     return this.http
       .post<RegistrationResponseDTO>(this._registartionUrl, {
         ...params,
@@ -105,7 +105,7 @@ export class AuthService {
     }
   }
 
-  updateUserState(user: LoginResponseDTO):void {
+  updateUserState(user: LoginResponseDTO): void {
     this._stateSubject.next({
       isAuthorized: true,
       user: user,

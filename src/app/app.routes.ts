@@ -10,9 +10,25 @@ export const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path: 'profile/:id',
+    path: 'profile',
     title: 'Profile page',
     component: ProfilePageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'addadvert',
+    title: 'Add Advert page',
+    pathMatch: 'full',
+    loadChildren: async () =>
+      (await import('./pages/add-advert-page')).addAdvertPageRoutes,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'adverts',
+    title: 'Adverts page',
+    pathMatch: 'full',
+    loadChildren: async () =>
+      (await import('./pages/user-adverts')).userAdvertsPageRoutes,
     canActivate: [authGuard],
   },
   {

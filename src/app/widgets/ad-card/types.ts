@@ -1,12 +1,12 @@
 export interface Advert {
-  guid: string;
+  id: string;
   title: string;
   description: string;
   category: string;
   section: string;
   subcategory: string;
   images: string[];
-  amount: string;
+  price: string;
   address: string;
   date: string;
   userGuid: string;

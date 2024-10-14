@@ -1,8 +1,8 @@
 <p-card
   [header]="card?.title"
-  [subheader]="card?.amount + ' P'"
+  [subheader]="card?.price + ' P'"
   class="ad-card"
-  [routerLink]="['/ad',card?.guid]"
+  [routerLink]="['/ad',card?.id]"
 >
   <ng-template pTemplate="header">
     <img alt="Card" [src]="card?.images[0]" class="ad-card-image" />

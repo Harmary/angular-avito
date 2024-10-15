@@ -1,4 +1,4 @@
-import { Subcategory } from "core/layout/categories-sidebar/types";
+import { Subcategory } from "widgets/categories-sidebar/types";
 
 export type SubmitAdvertDTO = Partial<{
   subcategory: Subcategory | null | string;

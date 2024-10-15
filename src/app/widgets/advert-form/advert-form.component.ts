@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subcategory } from 'core/layout/categories-sidebar/types';
+import { Subcategory } from 'widgets/categories-sidebar/types';
 import { isNil } from 'lodash';
 import { nonEmptyArrayValidator } from 'pages/add-advert-page/image-array.validator';
 import { MessageService } from 'primeng/api';

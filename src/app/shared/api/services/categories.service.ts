@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 import { createFind } from 'rxjs/internal/operators/find';
 import { environment } from 'shared/environments/environments';
 import { BreadcrumbsDTO } from '../dtos/BreadcrumbsDTO';
-import { Category } from 'core/layout/categories-sidebar/types';
+import { Category } from 'widgets/categories-sidebar/types';
 
 @Injectable({
   providedIn: 'root',

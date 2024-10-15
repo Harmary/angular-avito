@@ -1,25 +1,22 @@
-<p-card [header]="card?.title" [subheader]="card?.price | customCurrency" class="ad-card" [routerLink]="['/ad',card?.id]">
+<p-card [header]="card?.title" [subheader]="card?.price | customCurrency" class="ad-card"
+  [routerLink]="['/ad',card?.id]">
   <ng-template pTemplate="header">
     <img alt="Card" [src]="card?.images![0]" class="ad-card-image" />
   </ng-template>
 
-  <div class="ad-card-info-wrapper">
-    <div>
-      <p class="ad-card-address">
-        <small class="text-muted">{{card?.address}}</small>
-      </p>
-      <p class="ad-card-date">
-        <small class="text-muted">{{card?.date}}</small>
-      </p>
-    </div>
+  <p class="ad-card-address">
+    <small class="text-muted">{{card?.address}}</small>
+  </p>
+  <p class="ad-card-date">
+    <small class="text-muted">{{card?.date}}</small>
+  </p>
 
-    @if(!readonly) {
-    <div>
-      <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" [routerLink]="['/editadvert',card?.id]" (click)="onEditClick($event)" />
-      <p-button icon="pi pi-trash" [rounded]="true" [text]="true" (onClick)="deleteAdvert(card?.id)" />
-    </div>
+  @if(!readonly) {
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" [routerLink]="['/editadvert',card?.id]"
+      (click)="onEditClick($event)" />
+    <p-button icon="pi pi-trash" [rounded]="true" [text]="true" (onClick)="deleteAdvert(card?.id)" />
+  </ng-template>
 
-    }
-  </div>
-
+  }
 </p-card>

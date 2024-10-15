@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { AuthComponent } from "features/auth/auth.component";
-import { CategoriesSidebarComponent } from "../categories-sidebar/categories-sidebar.component";
+import { CategoriesSidebarComponent } from "../../../widgets/categories-sidebar/categories-sidebar.component";
 import { RouterModule } from '@angular/router';
 
 @Component({

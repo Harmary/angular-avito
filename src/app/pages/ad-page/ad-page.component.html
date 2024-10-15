@@ -1,8 +1,17 @@
-<p class="ad-breadcrumbs">
-  <a href="">Город</a>&#10095;
-  <a href="">Категория</a>&#10095;
-  <a href="">Подкатегория</a>
-</p>
+<p-breadcrumb [model]="breadcrumbs" [style]="{background: 'none', border: 'none', padding: '1rem 0'}">
+  <ng-template pTemplate="item" let-item>
+    @if(item.route) {
+    <a [routerLink]="item.route" class="p-menuitem-link">
+      <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
+      <span class="text-primary font-semibold">{{ item.label }}</span>
+    </a>
+    } @else {
+    <a [href]="item.url">
+      <span class="text-color">{{ item.label }}</span>
+    </a>
+    }
+  </ng-template>
+</p-breadcrumb>
 
 <div class="ad-content">
   <div class="ad-content-left">
@@ -23,13 +32,8 @@
   <div class="ad-content-right">
     <h3 class="ad-title ad-price">{{advert?.price}} &#8381;</h3>
 
-    <p-button
-      class="ad-button"
-      size="large"
-      icon="pi pi-phone ad-button-icon"
-      [label]="isPhoneOpened? advert?.phone :'Показать номер телефона'"
-      (onClick)="openPhoneNumber()"
-    >
+    <p-button class="ad-button" size="large" icon="pi pi-phone ad-button-icon"
+      [label]="isPhoneOpened? advert?.phone :'Показать номер телефона'" (onClick)="openPhoneNumber()">
     </p-button>
 
     <div class="ad-content-details">

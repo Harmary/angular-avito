@@ -41,10 +41,7 @@ export class UserAdvertsComponent implements OnInit {
           if (adverts.length == 0) {
             this.error = 'Вы еще не добавили объявления';
           } else {
-            this.adverts = adverts.map((advert) => ({
-              ...advert,
-              price: currencyFormatter.format(Number(advert.price)),
-            }));
+            this.adverts = adverts
           }
         },
         error: () => {

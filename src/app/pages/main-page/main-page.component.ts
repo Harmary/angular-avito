@@ -85,6 +85,22 @@ export class MainPageComponent {
   ngOnInit(): void {
     this.isLoading = true;
     this.error = undefined;
+
+    this.idToFetch$
+      .pipe(
+        switchMap(({ id, type }) => {
+          return this._categoryService.getCategoryById(id!);
+        })
+      )
+      .subscribe({
+        next: (category) => {
+          if (category) {
+            this.title = category.name;
+          }
+        },
+        error: () => {},
+      });
+
     this.idToFetch$
       .pipe(
         switchMap(({ id, type }) => {
@@ -106,20 +122,6 @@ export class MainPageComponent {
         },
       });
 
-    this.idToFetch$
-      .pipe(
-        switchMap(({ id, type }) => {
-          return this._categoryService.getCategoryById(id!);
-        })
-      )
-      .subscribe({
-        next: (category) => {
-          if (category) {
-            this.title = category.name;
-          }
-        },
-        error: () => {},
-      });
   }
 
   sortCards(): void {

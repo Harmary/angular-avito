@@ -1,2 +1,17 @@
 @import "../../core/styles/functions.scss";
 @import "../../core/styles/form.scss";
+
+.image-gallery {
+  margin-top: gridSize(2);
+  display: flex;
+}
+
+.advert-form-image {
+  width: gridSize(40);
+  height: gridSize(40);
+  object-fit: cover;
+
+  &-wrapper {
+    margin: gridSize(4) 0;
+  }
+}

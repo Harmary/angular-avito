@@ -33,6 +33,7 @@ import validateInput from 'shared/lib/validateInput';
 import { RequestState } from 'shared/types/RequestState';
 import { AddressInputComponent } from 'shared/ui/address-input/address-input.component';
 import { ValidationMessageComponent } from 'shared/ui/validation-message/validation-message.component';
+import { AsyncWrapperComponent } from "../../shared/ui/async-wrapper/async-wrapper.component";
 
 @Component({
   selector: 'app-advert-form',
@@ -49,7 +50,8 @@ import { ValidationMessageComponent } from 'shared/ui/validation-message/validat
     ToastModule,
     CommonModule,
     AddressInputComponent,
-  ],
+    AsyncWrapperComponent
+],
   providers: [MessageService],
   templateUrl: './advert-form.component.html',
   styleUrl: './advert-form.component.scss',
@@ -105,6 +107,8 @@ export class AdvertFormComponent implements OnInit {
     map((params) => params['advertId'] as string | undefined),
     distinctUntilChanged()
   );
+  fileUpload: any;
+  images?: string[];
 
   constructor() {
     this.categoriesRequestState.isLoading = true;
@@ -123,10 +127,13 @@ export class AdvertFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.formRequestState.isLoading = true;
+    this.formRequestState.error = undefined;
     this.advertId$
       .pipe(
         switchMap((adId) => {
           if (!adId) {
+            this.formRequestState.isLoading = false;
             return of(null);
           }
           return this._advertService.getAdvertByID(adId).pipe(
@@ -150,11 +157,16 @@ export class AdvertFormComponent implements OnInit {
       .subscribe({
         next: (advert) => {
           if (!isNil(advert)) {
+            this.formRequestState.isLoading = false;
             this.formRequestState.data = advert;
             this.newAdvertForm.patchValue(advert);
+            this.images = advert.images;
           }
         },
-        error: () => {},
+        error: () => {
+          this.formRequestState.isLoading = false;
+          this.formRequestState.error = "Что-то пошло не так";
+        },
       });
   }
 
@@ -176,10 +188,20 @@ export class AdvertFormComponent implements OnInit {
     }
   }
 
+  removeImage(index: number) {
+    this.images?.splice(index, 1);
+    const images = this.newAdvertForm.value.images || [];
+    images.splice(index, 1);
+    this.newAdvertForm.patchValue({
+      images: images,
+    });
+  }
+
   onSubcategoryChange(event: CascadeSelectChangeEvent) {
     const newSelectedSubcategory = event.value;
     this.newAdvertForm.patchValue({ subcategory: newSelectedSubcategory });
   }
+
   handleFormSubmit() {
     if (this.newAdvertForm.valid) {
       this.formRequestState.isLoading = true;
@@ -199,18 +221,16 @@ export class AdvertFormComponent implements OnInit {
               };
 
               if (this.formRequestState.data?.id) {
-                this._advertService
-                  .updateAdvert(formData)
-                  .subscribe({
-                    next: (response) => {
-                      this.formRequestState.isLoading = false;
-                      this._router.navigate(['ad', response.id]);
-                    },
-                    error: (error) => {
-                      this.formRequestState.isLoading = false;
-                      this.formRequestState.error = error;
-                    },
-                  });
+                this._advertService.updateAdvert(formData).subscribe({
+                  next: (response) => {
+                    this.formRequestState.isLoading = false;
+                    this._router.navigate(['ad', response.id]);
+                  },
+                  error: (error) => {
+                    this.formRequestState.isLoading = false;
+                    this.formRequestState.error = error;
+                  },
+                });
               } else {
                 this._advertService.submitAdvert(formData).subscribe({
                   next: (response) => {

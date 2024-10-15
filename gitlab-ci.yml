@@ -1,0 +1,28 @@
+stages:
+•  build
+•  deploy
+
+build:
+stage: build
+image: node:14
+script:
+•  npm install
+•  npm run build --prod
+
+artifacts:
+paths:
+•  dist/
+
+
+deploy:
+stage: deploy
+image: node:14
+script:
+•  apt-get update -y
+•  apt-get install -y lftp
+•  lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST; mirror -R ./dist /public_html"
+•  npm install -g json-server
+•  npm run start:server
+
+only:
+•  main

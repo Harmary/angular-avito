@@ -1,87 +1,93 @@
-<form class="newAdvertForm-container form" (ngSubmit)="handleFormSubmit()" [formGroup]="newAdvertForm">
+<app-async-wrapper [isLoading]="formRequestState.isLoading" [error]="formRequestState.error">
+  <form class="newAdvertForm-container form" (ngSubmit)="handleFormSubmit()" [formGroup]="newAdvertForm">
 
-  <div class="input-group">
-    <label for="subcategory" class="input-label">Категория</label>
+    <div class="input-group">
+      <label for="subcategory" class="input-label">Категория</label>
 
-    <p-cascadeSelect formControlName="subcategory" [options]="categoriesRequestState.data" optionLabel="name"
-      optionGroupLabel="name" [optionGroupChildren]="['sections', 'subcategories']" placeholder="Выберите категорию" />
+      <p-cascadeSelect formControlName="subcategory" [options]="categoriesRequestState.data" optionLabel="name"
+        optionGroupLabel="name" [optionGroupChildren]="['sections', 'subcategories']"
+        placeholder="Выберите категорию" />
 
-    @if(this.newAdvertForm.controls.subcategory.invalid && this.newAdvertForm.controls.subcategory.touched) {
-    <small>
-      Выберите категорию
-    </small>
-    }
+      @if(this.newAdvertForm.controls.subcategory.invalid && this.newAdvertForm.controls.subcategory.touched) {
+      <small>
+        Выберите категорию
+      </small>
+      }
 
-  </div>
+    </div>
 
-  <div class="input-group">
-    <label for="title" class="input-label">Название</label>
+    <div class="input-group">
+      <label for="title" class="input-label">Название</label>
 
-    <input pInputText id="title" [class]="validateInput(newAdvertForm.controls.title)" autocomplete="off" type="text"
-      formControlName="title" />
+      <input pInputText id="title" [class]="validateInput(newAdvertForm.controls.title)" autocomplete="off" type="text"
+        formControlName="title" />
 
-    @if(this.newAdvertForm.controls.title.invalid && this.newAdvertForm.controls.title.touched) {
-    <small>
-      Введите название
-    </small>
-    }
+      @if(this.newAdvertForm.controls.title.invalid && this.newAdvertForm.controls.title.touched) {
+      <small>
+        Введите название
+      </small>
+      }
 
-  </div>
+    </div>
 
-  <div class="input-group">
-    <label for="description" class="input-label">Описание</label>
+    <div class="input-group">
+      <label for="description" class="input-label">Описание</label>
 
-    <textarea pInputTextarea rows="5" cols="80" id="description" type="text"
-      [class]="validateInput(newAdvertForm.controls.description)" autocomplete="off" type="text"
-      formControlName="description"> </textarea>
+      <textarea pInputTextarea rows="5" cols="80" id="description" type="text"
+        [class]="validateInput(newAdvertForm.controls.description)" autocomplete="off" type="text"
+        formControlName="description"> </textarea>
 
-    @if(this.newAdvertForm.controls.description.invalid && this.newAdvertForm.controls.description.touched) {
-    <small>
-      Введите описание
-    </small>
-    }
-  </div>
+      @if(this.newAdvertForm.controls.description.invalid && this.newAdvertForm.controls.description.touched) {
+      <small>
+        Введите описание
+      </small>
+      }
+    </div>
 
-  <app-address-input [formGroup]="newAdvertForm" />
+    <app-address-input [formGroup]="newAdvertForm" />
 
-  <div class="input-group">
-    <label for="price" class="input-label">Цена</label>
+    <div class="input-group">
+      <label for="price" class="input-label">Цена</label>
 
-    <p-inputGroup>
-      <input pInputText id="price" [class]="validateInput(newAdvertForm.controls.price)" autocomplete="off"
-        type="number" formControlName="price" />
-      <p-inputGroupAddon>&#8381;</p-inputGroupAddon>
-    </p-inputGroup>
+      <p-inputGroup>
+        <input pInputText id="price" [class]="validateInput(newAdvertForm.controls.price)" autocomplete="off"
+          type="number" formControlName="price" />
+        <p-inputGroupAddon>&#8381;</p-inputGroupAddon>
+      </p-inputGroup>
 
 
-    @if(this.newAdvertForm.controls.title.invalid && this.newAdvertForm.controls.title.touched) {
-    <small>
-      Введите цену
-    </small>
-    }
+      @if(this.newAdvertForm.controls.title.invalid && this.newAdvertForm.controls.title.touched) {
+      <small>
+        Введите цену
+      </small>
+      }
 
-  </div>
+    </div>
 
-  <div class="">
-    <p-toast />
-    <p-fileUpload
-      name="images"
-      (onSelect)="onFileSelect($event)"
-      [multiple]="true" accept="image/*"
-      maxFileSize="10000000"
-      cancelLabel="Отменить"
-      chooseLabel="Выбрать"
-      uploadLabel="Загрузить"
-      showUploadButton="false"
-    >
-    </p-fileUpload>
-  </div>
+    <div class="">
+      <p-toast />
+      <p-fileUpload name="images" (onSelect)="onFileSelect($event)" [multiple]="true" accept="image/*"
+        maxFileSize="10000000" cancelLabel="Отменить" chooseLabel="Выбрать" uploadLabel="Загрузить"
+        showUploadButton="false">
+      </p-fileUpload>
+      @if(images) {
+      <div class="image-gallery">
+        @for(image of images; track $index) {
+        <div class="advert-form-image-wrapper">
+          <img [src]="image" alt="Изображение объявления" class="advert-form-image" />
+          <p-button icon="pi pi-trash" [rounded]="true" [text]="true" (onClick)="removeImage($index)" />
+        </div>
 
-  <p-button
-    label="Опубликовать"
-    type="submit"
-    [icon]="this.formRequestState.isLoading ? 'pi pi-spin pi-spinner' : undefined"
-    [disabled]="!!newAdvertForm.invalid"
-  />
+        }
+      </div>
+      }
 
-</form>
+    </div>
+
+    <p-button label="Опубликовать" type="submit"
+      [icon]="this.formRequestState.isLoading ? 'pi pi-spin pi-spinner' : undefined"
+      [disabled]="!!newAdvertForm.invalid" />
+
+  </form>
+
+</app-async-wrapper>

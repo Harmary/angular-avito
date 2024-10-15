@@ -1,5 +1,11 @@
 .ad-card {
   width: 19rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
 
   &-address,
   &-date {

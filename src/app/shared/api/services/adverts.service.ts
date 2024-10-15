@@ -61,6 +61,10 @@ export class AdvertsService {
     });
   }
 
+  deleteAdvertById(adId?: string): Observable<AdvertDTO[]> {
+    return this.http.delete<AdvertDTO[]>(`${this._apiUrl}/${adId}`);
+  }
+
   submitAdvert(data: SubmitAdvertDTO): Observable<AdvertDTO> {
     const payload = {
       ...data,
@@ -72,5 +76,10 @@ export class AdvertsService {
     };
 
     return this.http.post<AdvertDTO>(this._apiUrl, payload);
+  }
+
+  updateAdvert(data: AdvertDTO): Observable<AdvertDTO> {
+
+    return this.http.put<AdvertDTO>(`${this._apiUrl}/${data.id}`, data);
   }
 }

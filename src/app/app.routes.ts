@@ -24,6 +24,13 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'editadvert',
+    title: 'Edit Advert page',
+    loadChildren: async () =>
+      (await import('./pages/edit-advert-page')).editAdvertPageRoutes,
+    canActivate: [authGuard],
+  },
+  {
     path: 'adverts',
     title: 'Adverts page',
     pathMatch: 'full',

@@ -9,11 +9,12 @@ import { BreadcrumbsDTO } from 'shared/api/dtos/BreadcrumbsDTO';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
 import currencyFormatter, { CustomCurrencyPipe } from 'shared/lib/currencyFormatter';
+import { AsyncWrapperComponent } from "../../shared/ui/async-wrapper/async-wrapper.component";
 
 @Component({
   selector: 'app-ad-page',
   standalone: true,
-  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule, CustomCurrencyPipe],
+  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule, CustomCurrencyPipe, AsyncWrapperComponent],
   templateUrl: './ad-page.component.html',
   styleUrl: './ad-page.component.scss',
 })
@@ -25,12 +26,16 @@ export class AdPageComponent {
   breadcrumbs: MenuItem[] | undefined;
   isPhoneOpened: boolean = false;
   currencyFormatter = currencyFormatter;
+  isLoading: boolean = false;
+  error?: string;
 
   readonly adId$ = this._activatedRoute.params.pipe(
     map((params) => params['adId'] as string | undefined)
   );
 
   ngOnInit(): void {
+    this.isLoading = true;
+    this.error = undefined;
     this.adId$
       .pipe(
         switchMap((adId) => {
@@ -61,9 +66,12 @@ export class AdPageComponent {
                 route: `/${breadcrumbs.category.guid}/${breadcrumbs.section.guid}/${breadcrumbs.subcategory.guid}`,
               },
             ];
+            this.isLoading = false;
           }
         },
-        error: () => {},
+        error: () => {
+          this.error = 'Что-то пошло не так'
+        },
       });
   }
 

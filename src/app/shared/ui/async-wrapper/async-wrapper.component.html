@@ -1,0 +1,9 @@
+@if(isLoading) {
+<div class="loading-spinner">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</div>
+} @else if ( error ) {
+<p>{{error}}</p>
+} @else {
+  <ng-content ></ng-content>
+}

@@ -24,8 +24,16 @@
 }
 
 .helper-text {
-
 }
 .text-red {
   color: #ff6767;
+}
+
+.loading-spinner {
+  position: absolute;
+  left: 50%;
+  top: 30vh;
+  i {
+    color: var(--primary-color)
+  }
 }

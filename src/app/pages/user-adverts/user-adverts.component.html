@@ -1,7 +1,8 @@
 <h2>Мои объявления</h2>
-
-<div class="adverts-cards-wrapper">
-  @for (card of adverts; track $index) {
-  <app-ad-card [card]="card" [readonly]="false"></app-ad-card>
-  }
-</div>
+<app-async-wrapper [isLoading]="isLoading" [error]="error">
+  <div class="adverts-cards-wrapper">
+    @for (card of adverts; track $index) {
+    <app-ad-card [card]="card" [readonly]="false"></app-ad-card>
+    }
+  </div>
+</app-async-wrapper>

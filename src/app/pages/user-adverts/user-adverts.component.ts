@@ -3,6 +3,7 @@ import { isUndefined } from 'lodash';
 import { switchMap } from 'rxjs';
 import { AdvertsService } from 'shared/api/services';
 import { AuthService } from 'shared/api/services/auth.service';
+import currencyFormatter from 'shared/lib/currencyFormatter';
 import { Advert } from 'widgets/ad-card';
 import { AdCardComponent } from 'widgets/ad-card/ad-card.component';
 
@@ -31,7 +32,10 @@ export class UserAdvertsComponent implements OnInit {
         })
       )
       .subscribe((adverts) => {
-        this.adverts = adverts;
+        this.adverts = adverts.map((advert) => ({
+          ...advert,
+          price: currencyFormatter.format(Number(advert.price)),
+        }));
       });
   }
 }

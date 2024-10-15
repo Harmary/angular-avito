@@ -8,11 +8,12 @@ import { GalleriaModule } from 'primeng/galleria';
 import { BreadcrumbsDTO } from 'shared/api/dtos/BreadcrumbsDTO';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
+import currencyFormatter, { CustomCurrencyPipe } from 'shared/lib/currencyFormatter';
 
 @Component({
   selector: 'app-ad-page',
   standalone: true,
-  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule],
+  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule, CustomCurrencyPipe],
   templateUrl: './ad-page.component.html',
   styleUrl: './ad-page.component.scss',
 })
@@ -23,6 +24,7 @@ export class AdPageComponent {
   advert: Advert | undefined;
   breadcrumbs: MenuItem[] | undefined;
   isPhoneOpened: boolean = false;
+  currencyFormatter = currencyFormatter;
 
   readonly adId$ = this._activatedRoute.params.pipe(
     map((params) => params['adId'] as string | undefined)
@@ -59,7 +61,8 @@ export class AdPageComponent {
                 route: `/${breadcrumbs.category.guid}/${breadcrumbs.section.guid}/${breadcrumbs.subcategory.guid}`,
               },
             ];
-        }},
+          }
+        },
         error: () => {},
       });
   }

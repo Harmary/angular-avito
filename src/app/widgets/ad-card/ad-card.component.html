@@ -1,6 +1,6 @@
-<p-card [header]="card?.title" [subheader]="card?.price + ' P'" class="ad-card" [routerLink]="['/ad',card?.id]">
+<p-card [header]="card?.title" [subheader]="card?.price" class="ad-card" [routerLink]="['/ad',card?.id]">
   <ng-template pTemplate="header">
-    <img alt="Card" [src]="card?.images ?? card?.images![0]" class="ad-card-image" />
+    <img alt="Card" [src]="card?.images![0]" class="ad-card-image" />
   </ng-template>
 
   <div class="ad-card-info-wrapper">

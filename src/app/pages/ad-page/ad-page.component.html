@@ -30,7 +30,7 @@
   </div>
 
   <div class="ad-content-right">
-    <h3 class="ad-title ad-price">{{advert?.price}} &#8381;</h3>
+    <h3 class="ad-title ad-price">{{advert?.price | customCurrency}} </h3>
 
     <p-button class="ad-button" size="large" icon="pi pi-phone ad-button-icon"
       [label]="isPhoneOpened? advert?.phone :'Показать номер телефона'" (onClick)="openPhoneNumber()">

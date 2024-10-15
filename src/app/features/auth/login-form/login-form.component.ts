@@ -62,7 +62,7 @@ export class LoginFormComponent {
         next: (response) => {
           this.isLoading = false;
           localStorage.setItem(AUTH_TOKEN, response.id);
-          this.router.navigate(['profile', response.id]);
+          this.router.navigate(['profile']);
           this.authModalService.close();
         },
         error: () => {

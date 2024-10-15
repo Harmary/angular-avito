@@ -12,7 +12,7 @@ const currencyFormatter = new Intl.NumberFormat('ru-RU', {
   name: 'customCurrency',
 })
 export class CustomCurrencyPipe implements PipeTransform {
-  transform(value?: string): string | null {
+  transform(value?: string): string | undefined {
     if (value == null) {
       return '';
     }

@@ -1,18 +1,28 @@
 import { Component, inject } from '@angular/core';
-import { AdCardComponent } from '../../widgets/ad-card/ad-card.component';
+import { AdCardComponent } from 'widgets/ad-card/ad-card.component';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, distinctUntilChanged, map, switchMap } from 'rxjs';
-import { AdvertsService, CategoriesService } from '../../shared/api/services';
-import { Advert } from '../../widgets/ad-card';
+import { AdvertsService, CategoriesService } from 'shared/api/services';
+import { Advert } from 'widgets/ad-card';
 import { isNil } from 'lodash';
-import currencyFormatter from 'shared/lib/currencyFormatter';
-import { AsyncWrapperComponent } from "../../shared/ui/async-wrapper/async-wrapper.component";
+import { AsyncWrapperComponent } from 'shared/ui/async-wrapper/async-wrapper.component';
+import { DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [CommonModule, AdCardComponent, CurrencyPipe, AsyncWrapperComponent],
+  imports: [
+    CommonModule,
+    AdCardComponent,
+    CurrencyPipe,
+    AsyncWrapperComponent,
+    DropdownModule,
+  ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
@@ -22,6 +32,15 @@ export class MainPageComponent {
   private _categoryService = inject(CategoriesService);
   cards: Advert[] | undefined;
   title: string = 'Рекомендации для вас';
+
+  sortOptions = [
+    { label: 'Дешевле', value: 'priceAsc' },
+    { label: 'Дороже', value: 'priceDesc' },
+    { label: 'Новые', value: 'dateDesc' },
+    { label: 'Старые', value: 'dateAsc' },
+  ];
+  selectedSortOption: string = 'price';
+
   isLoading: boolean = false;
   error?: string;
 
@@ -75,20 +94,15 @@ export class MainPageComponent {
       .subscribe({
         next: (adverts) => {
           this.isLoading = false;
-          if(adverts.length == 0) {
-            this.error = "Объявлений по данной категории не найдено"
+          if (adverts.length == 0) {
+            this.error = 'Объявлений по данной категории не найдено';
+          } else {
+            this.cards = adverts;
           }
-          else {
-            this.cards = adverts.map((advert) => ({
-              ...advert,
-              price: currencyFormatter.format(Number(advert.price)),
-            }));
-          }
-
         },
         error: () => {
           this.isLoading = false;
-          this.error = "Что-то пошло не так"
+          this.error = 'Что-то пошло не так';
         },
       });
 
@@ -100,9 +114,43 @@ export class MainPageComponent {
       )
       .subscribe({
         next: (category) => {
-          this.title = category.name;
+          if (category) {
+            this.title = category.name;
+          }
         },
         error: () => {},
       });
+  }
+
+  sortCards(): void {
+    if (this.cards) {
+      switch (this.selectedSortOption) {
+        case 'priceAsc':
+          this.cards.sort((a, b) => Number(a.price) - Number(b.price));
+          break;
+        case 'priceDesc':
+          this.cards.sort((a, b) => Number(b.price) - Number(a.price));
+          break;
+        case 'dateAsc':
+          this.cards.sort(
+            (a, b) =>
+              dayjs(a.date, 'DD-MM-YYYY').valueOf() -
+              dayjs(b.date, 'DD-MM-YYYY').valueOf()
+          );
+          break;
+        case 'dateDesc':
+          this.cards.sort(
+            (a, b) =>
+              dayjs(b.date, 'DD-MM-YYYY').valueOf() -
+              dayjs(a.date, 'DD-MM-YYYY').valueOf()
+          );
+          break;
+      }
+    }
+  }
+
+  onSortChange(event: DropdownChangeEvent): void {
+    this.selectedSortOption = event.value;
+    this.sortCards();
   }
 }

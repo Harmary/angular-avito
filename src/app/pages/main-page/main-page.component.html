@@ -1,4 +1,11 @@
 <h4 class="main-title">{{title}}</h4>
+
+<div class="sort-dropdown">
+  <p-dropdown [options]="sortOptions" [options]="sortOptions" (onChange)="onSortChange($event)"
+    placeholder="Сортировка">
+  </p-dropdown>
+</div>
+
 <app-async-wrapper [isLoading]="isLoading" [error]="error">
   <div class="main-cards-wrapper">
     @for (card of cards; track $index) {

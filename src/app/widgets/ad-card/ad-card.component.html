@@ -1,4 +1,4 @@
-<p-card [header]="card?.title" [subheader]="card?.price" class="ad-card" [routerLink]="['/ad',card?.id]">
+<p-card [header]="card?.title" [subheader]="card?.price | customCurrency" class="ad-card" [routerLink]="['/ad',card?.id]">
   <ng-template pTemplate="header">
     <img alt="Card" [src]="card?.images![0]" class="ad-card-image" />
   </ng-template>

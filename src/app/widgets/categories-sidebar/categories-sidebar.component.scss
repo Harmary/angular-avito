@@ -6,12 +6,12 @@
     flex-direction: row;
   }
   &-link {
-      text-decoration: none;
-      color: inherit;
+    text-decoration: none;
+    color: inherit;
 
-      &:hover {
-        color: var(--highlight-text-color);
-      }
+    &:hover {
+      color: var(--highlight-text-color);
+    }
   }
 }
 
@@ -37,7 +37,6 @@
 .subcategory {
   &-title {
     margin: 0 0 gridSize(3);
-
   }
 
   &-option {

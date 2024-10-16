@@ -12,7 +12,7 @@
           [options]="this.requestState.data"
           optionLabel="name"
           (onClick)="openSections($event)"
-          [style]="{ border: 'none' }"
+          [style]="{ border: 'none'}"
         >
           <ng-template let-categories pTemplate="item">
             <div class="category">
@@ -25,7 +25,9 @@
       <div class="subcategories">
         @if (showSections) {
           <h2 class="category-title"><a class="sidebar-link"
-              [routerLink]="['/', selectedCategory?.guid]">{{selectedCategory?.name}}</a></h2>
+              [routerLink]="['/', selectedCategory?.guid]"
+              (click)="op.hide()"
+              >{{selectedCategory?.name}}</a></h2>
 
           @for (section of selectedCategory?.sections; track $index) {
             <div class="subcategory">
@@ -33,6 +35,7 @@
                 <a
                   class="sidebar-link"
                   [routerLink]="['/', selectedCategory?.guid, section.guid]"
+                  (click)="op.hide()"
                 >
                 {{section.name}}
                 </a>
@@ -41,6 +44,7 @@
                 <a
                   class="subcategory-option sidebar-link"
                   [routerLink]="['/', selectedCategory?.guid, section.guid, subcategory.guid]"
+                  (click)="op.hide()"
                 >
                   {{subcategory.name}}
                 </a>

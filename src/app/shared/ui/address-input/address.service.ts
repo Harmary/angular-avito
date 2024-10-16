@@ -8,7 +8,7 @@ import { environment } from 'shared/environments/environments';
 })
 export class AddressService {
   private url =
-    'http://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
+    'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
   private token = environment.dadataToken;
 
   constructor(private http: HttpClient) {}

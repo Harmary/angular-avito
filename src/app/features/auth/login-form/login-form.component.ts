@@ -34,7 +34,8 @@ export class LoginFormComponent {
   private authModalService = inject(AuthModalService);
   destroyRef = inject(DestroyRef);
   private router = inject(Router);
-  isLoading = false;
+  isLoading:boolean = false;
+  error?:string = undefined;
   readonly validateInput = validateInput;
   loginForm = new FormGroup({
     phone: new FormControl('', {
@@ -54,6 +55,7 @@ export class LoginFormComponent {
     }
 
     this.isLoading = true;
+    this.error = undefined;
 
     this.authService
       .login(this.loginForm.getRawValue())
@@ -61,12 +63,14 @@ export class LoginFormComponent {
       .subscribe({
         next: (response) => {
           this.isLoading = false;
+          this.error = undefined;
           localStorage.setItem(AUTH_TOKEN, response.id);
           this.router.navigate(['profile']);
           this.authModalService.close();
         },
         error: () => {
           this.isLoading = false;
+          this.error = 'Неправильный логин или пароль'
         },
       });
   }

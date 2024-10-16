@@ -1,4 +1,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="handleFormSubmit()" class="login-container">
+  @if(error) {
+    <p class="text-red">{{error}}</p>
+  }
   <div class="input-group">
     <label for="username" class="font-semibold w-6rem">Номер телефона</label>
     <input

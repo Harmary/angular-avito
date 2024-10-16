@@ -65,9 +65,10 @@ export class RegistrationFormComponent {
       .subscribe({
         next: (response) => {
           localStorage.setItem(AUTH_TOKEN, response.id);
+          this.authService.updateUserState(response);
           this.isLoading = false;
           this.authModalService.close();
-          this.router.navigate(['profile', response.id]);
+          this.router.navigate(['profile']);
         },
         error: () => {
           this.isLoading = false;

@@ -12,7 +12,7 @@
     />
 
     @if(this.registrationForm.controls.phone.invalid && this.registrationForm.controls.phone.touched) {
-    <small id="username-help">
+    <small class="text-red">
       Введите верный номер телефона
     </small>
     }
@@ -31,7 +31,7 @@
     />
 
     @if(this.registrationForm.controls.phone.invalid && this.registrationForm.controls.phone.touched) {
-      <small id="username-help">
+      <small class="text-red">
         Введите имя
       </small>
     }
@@ -50,7 +50,7 @@
     />
 
     @if(this.registrationForm.controls.password.invalid && this.registrationForm.controls.password.touched) {
-      <small id="username-help">
+      <small class="text-red">
         Введите пароль
       </small>
     }

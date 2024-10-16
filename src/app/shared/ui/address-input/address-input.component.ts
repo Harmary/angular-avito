@@ -1,9 +1,9 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 import validateInput from 'shared/lib/validateInput';
 import { AddressService } from './address.service';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @Component({
   selector: 'app-address-input',

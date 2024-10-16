@@ -14,6 +14,7 @@ import { AuthService } from 'shared/api/services/auth.service';
 import { ProfileService } from 'shared/api/services/profile.service';
 import validateInput from 'shared/lib/validateInput';
 import { PhoneFormatPipe } from "../../shared/lib/phone.pipe";
+import { AddressInputComponent } from "../../shared/ui/address-input/address-input.component";
 
 @Component({
   selector: 'app-profile-page',
@@ -25,7 +26,8 @@ import { PhoneFormatPipe } from "../../shared/lib/phone.pipe";
     ButtonModule,
     CommonModule,
     NgOptimizedImage,
-    PhoneFormatPipe
+    PhoneFormatPipe,
+    AddressInputComponent
 ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',

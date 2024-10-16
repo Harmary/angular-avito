@@ -33,7 +33,6 @@ export const routes: Routes = [
   {
     path: 'adverts',
     title: 'Adverts page',
-    pathMatch: 'full',
     loadChildren: async () =>
       (await import('./pages/user-adverts')).userAdvertsPageRoutes,
     canActivate: [authGuard],

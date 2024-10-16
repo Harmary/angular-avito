@@ -5,7 +5,7 @@
   </ng-template>
 
   <p class="ad-card-address">
-    <small class="text-muted">{{card?.address}}</small>
+    <small class="text-muted">{{card?.address | shorten}}</small>
   </p>
   <p class="ad-card-date">
     <small class="text-muted">{{card?.date}}</small>

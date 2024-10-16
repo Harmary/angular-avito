@@ -10,7 +10,7 @@
     <h3>{{this.userForm.controls.name.value}}</h3>
 
     <div class="profile-field">
-      <p><span class="profile-field-title">Tелефон</span>: {{this.userForm.controls.phone.value}}</p>
+      <p><span class="profile-field-title">Tелефон</span>: {{this.userForm.controls.phone.value | phoneFormat}}</p>
     </div>
 
     <div class="profile-field">

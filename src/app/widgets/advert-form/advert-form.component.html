@@ -9,7 +9,7 @@
         placeholder="Выберите категорию" />
 
       @if(this.newAdvertForm.controls.subcategory.invalid && this.newAdvertForm.controls.subcategory.touched) {
-      <small>
+      <small class="text-red">
         Выберите категорию
       </small>
       }
@@ -23,7 +23,7 @@
         formControlName="title" />
 
       @if(this.newAdvertForm.controls.title.invalid && this.newAdvertForm.controls.title.touched) {
-      <small>
+      <small class="text-red">
         Введите название
       </small>
       }
@@ -38,7 +38,7 @@
         formControlName="description"> </textarea>
 
       @if(this.newAdvertForm.controls.description.invalid && this.newAdvertForm.controls.description.touched) {
-      <small>
+      <small class="text-red">
         Введите описание
       </small>
       }
@@ -57,7 +57,7 @@
 
 
       @if(this.newAdvertForm.controls.title.invalid && this.newAdvertForm.controls.title.touched) {
-      <small>
+      <small class="text-red">
         Введите цену
       </small>
       }

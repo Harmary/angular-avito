@@ -5,16 +5,16 @@ import { map, switchMap } from 'rxjs';
 import { AdvertsService, CategoriesService } from 'shared/api/services';
 import { Advert } from 'widgets/ad-card';
 import { GalleriaModule } from 'primeng/galleria';
-import { BreadcrumbsDTO } from 'shared/api/dtos/BreadcrumbsDTO';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
-import currencyFormatter, { CustomCurrencyPipe } from 'shared/lib/currencyFormatter';
-import { AsyncWrapperComponent } from "../../shared/ui/async-wrapper/async-wrapper.component";
+import currencyFormatter, { CustomCurrencyPipe } from 'shared/lib/currency.pipe';
+import { AsyncWrapperComponent } from "shared/ui/async-wrapper/async-wrapper.component";
+import { PhoneFormatPipe } from "shared/lib/phone.pipe";
 
 @Component({
   selector: 'app-ad-page',
   standalone: true,
-  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule, CustomCurrencyPipe, AsyncWrapperComponent],
+  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule, CustomCurrencyPipe, AsyncWrapperComponent, PhoneFormatPipe],
   templateUrl: './ad-page.component.html',
   styleUrl: './ad-page.component.scss',
 })

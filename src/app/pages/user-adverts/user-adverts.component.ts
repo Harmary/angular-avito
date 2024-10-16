@@ -3,7 +3,6 @@ import { isUndefined } from 'lodash';
 import { switchMap } from 'rxjs';
 import { AdvertsService } from 'shared/api/services';
 import { AuthService } from 'shared/api/services/auth.service';
-import currencyFormatter from 'shared/lib/currencyFormatter';
 import { AsyncWrapperComponent } from 'shared/ui/async-wrapper/async-wrapper.component';
 import { Advert } from 'widgets/ad-card';
 import { AdCardComponent } from 'widgets/ad-card/ad-card.component';

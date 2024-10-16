@@ -6,12 +6,13 @@ import { CardModule } from 'primeng/card';
 import { Advert } from './types';
 import { AdvertsService } from 'shared/api/services';
 import { MessageService } from 'primeng/api';
-import { CustomCurrencyPipe } from 'shared/lib/currencyFormatter';
+import { CustomCurrencyPipe } from 'shared/lib/currency.pipe';
+import { ShortenPipe } from "../../shared/lib/shorten.pipe";
 
 @Component({
   selector: 'app-ad-card',
   standalone: true,
-  imports: [CommonModule, CardModule, ButtonModule, RouterModule, CustomCurrencyPipe],
+  imports: [CommonModule, CardModule, ButtonModule, RouterModule, CustomCurrencyPipe, ShortenPipe],
   providers: [MessageService],
   templateUrl: './ad-card.component.html',
   styleUrl: './ad-card.component.scss',

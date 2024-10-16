@@ -10,7 +10,7 @@
       formControlName="phone"
     />
     @if(this.loginForm.controls.phone.invalid && this.loginForm.controls.phone.touched) {
-    <small id="username-help">
+    <small class="text-red">
       Введите верный номер телефона
     </small>
     }
@@ -27,7 +27,7 @@
       formControlName="password"
     />
       @if(this.loginForm.controls.password.invalid && this.loginForm.controls.password.touched) {
-      <small id="username-help">
+      <small class="text-red">
         Введите пароль
       </small>
       }

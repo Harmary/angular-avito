@@ -19,13 +19,28 @@
       <h3 class="ad-title">{{advert?.title}}</h3>
 
       <p-galleria [value]="advert?.images" [numVisible]="3" class="ad-galleria">
-        <ng-template pTemplate="item" let-item>
-          <img [src]="item" class="ad-galleria-main-img" />
+        <ng-template pTemplate="item" let-item >
+          <img [src]="item" class="ad-galleria-main-img" (click)="openFullScreen()"/>
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
           <div class="">
             <img [src]="item" class="ad-galleria-bottom-img" />
           </div>
+        </ng-template>
+      </p-galleria>
+
+      <p-galleria
+        [value]="advert?.images"
+        [(visible)]="displayBasic"
+        [containerStyle]="{ 'max-width': '850px' }"
+        [numVisible]="7"
+        [circular]="true"
+        [fullScreen]="true"
+        [showItemNavigators]="true"
+        [showThumbnails]="false"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item" style="width: 100%; display: block;" />
         </ng-template>
       </p-galleria>
     </div>

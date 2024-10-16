@@ -14,7 +14,15 @@ import { PhoneFormatPipe } from "shared/lib/phone.pipe";
 @Component({
   selector: 'app-ad-page',
   standalone: true,
-  imports: [ButtonModule, GalleriaModule, RouterModule, BreadcrumbModule, CustomCurrencyPipe, AsyncWrapperComponent, PhoneFormatPipe],
+  imports: [
+    ButtonModule,
+    GalleriaModule,
+    RouterModule,
+    BreadcrumbModule,
+    CustomCurrencyPipe,
+    AsyncWrapperComponent,
+    PhoneFormatPipe,
+  ],
   templateUrl: './ad-page.component.html',
   styleUrl: './ad-page.component.scss',
 })
@@ -25,6 +33,8 @@ export class AdPageComponent {
   advert: Advert | undefined;
   breadcrumbs: MenuItem[] | undefined;
   isPhoneOpened: boolean = false;
+  fullscreen: boolean = false;
+  displayBasic: boolean = false;
   currencyFormatter = currencyFormatter;
   isLoading: boolean = false;
   error?: string;
@@ -70,12 +80,16 @@ export class AdPageComponent {
           }
         },
         error: () => {
-          this.error = 'Что-то пошло не так'
+          this.error = 'Что-то пошло не так';
         },
       });
   }
 
   openPhoneNumber() {
     this.isPhoneOpened = !this.isPhoneOpened;
+  }
+
+  openFullScreen() {
+    this.displayBasic = true;
   }
 }
